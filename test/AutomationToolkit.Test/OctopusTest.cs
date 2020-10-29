@@ -6,16 +6,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Octopus.Tests
+namespace AutomationToolkit.Test
 {
     public class OctopusTest
     {
         IConfiguration _configuration;
         OctopusRepository _octopusRepository;
-        
+
         public OctopusTest()
         {
-            _configuration =  new ConfigurationBuilder()
+            _configuration = new ConfigurationBuilder()
                                         //.SetBasePath(outputPath)
                                         .AddJsonFile("appsettings.json", optional: true)
                                         .AddUserSecrets("cf9af699-d3c2-4090-8231-fd3a1cb45a5f")

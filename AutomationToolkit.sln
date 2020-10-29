@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Octopus",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Test", "test\AutomationToolkit.Test\AutomationToolkit.Test.csproj", "{F4377EB0-CE82-4EEC-873D-1D5A6EFFD0F0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Common", "src\AutomationToolkit.Common\AutomationToolkit.Common.csproj", "{768B7FFB-BBC6-44EA-B45B-404BBF924B5F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Proget", "src\AutomationToolkit.Proget\AutomationToolkit.Proget.csproj", "{D27152AA-DCF3-4220-B916-984B09497AC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F4377EB0-CE82-4EEC-873D-1D5A6EFFD0F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4377EB0-CE82-4EEC-873D-1D5A6EFFD0F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4377EB0-CE82-4EEC-873D-1D5A6EFFD0F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{768B7FFB-BBC6-44EA-B45B-404BBF924B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768B7FFB-BBC6-44EA-B45B-404BBF924B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768B7FFB-BBC6-44EA-B45B-404BBF924B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768B7FFB-BBC6-44EA-B45B-404BBF924B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D27152AA-DCF3-4220-B916-984B09497AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D27152AA-DCF3-4220-B916-984B09497AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D27152AA-DCF3-4220-B916-984B09497AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D27152AA-DCF3-4220-B916-984B09497AC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

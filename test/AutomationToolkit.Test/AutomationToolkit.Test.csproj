@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\AutomationToolkit.Octopus\AutomationToolkit.Octopus.csproj" />
+    <ProjectReference Include="..\..\src\AutomationToolkit.Proget\AutomationToolkit.Proget.csproj" />
   </ItemGroup>
 
   <ItemGroup>

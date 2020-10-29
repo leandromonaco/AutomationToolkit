@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Octopus.Repository.Http
+namespace AutomationToolkit.Common.Http
 {
     public class HttpHostBuilder
     {
-        IHttpService _httpService;
+        readonly IHttpService _httpService;
 
         public HttpHostBuilder()
         {

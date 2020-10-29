@@ -2,7 +2,7 @@
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace Octopus.Repository.Http
+namespace AutomationToolkit.Common.Http
 {
     public class HttpService : IHttpService
     {

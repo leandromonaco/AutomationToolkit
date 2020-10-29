@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Octopus.Repository.Http
+namespace AutomationToolkit.Common.Http
 {
     public interface IHttpService
     {
