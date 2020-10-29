@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Octopus", "src\AutomationToolkit.Octopus\AutomationToolkit.Octopus.csproj", "{371F4C8B-8478-4BAC-A442-F5F49798E780}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Test", "test\AutomationToolkit.Test\AutomationToolkit.Test.csproj", "{F4377EB0-CE82-4EEC-873D-1D5A6EFFD0F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{371F4C8B-8478-4BAC-A442-F5F49798E780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{371F4C8B-8478-4BAC-A442-F5F49798E780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{371F4C8B-8478-4BAC-A442-F5F49798E780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{371F4C8B-8478-4BAC-A442-F5F49798E780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4377EB0-CE82-4EEC-873D-1D5A6EFFD0F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4377EB0-CE82-4EEC-873D-1D5A6EFFD0F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4377EB0-CE82-4EEC-873D-1D5A6EFFD0F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4377EB0-CE82-4EEC-873D-1D5A6EFFD0F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F2044FB-EFF6-49A0-B157-BED6AA66BF0E}
+	EndGlobalSection
+EndGlobal
