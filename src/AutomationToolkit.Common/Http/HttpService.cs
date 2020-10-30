@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AutomationToolkit.Common.Http
@@ -37,20 +38,18 @@ namespace AutomationToolkit.Common.Http
             return await result.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> PostAsync(string requestUri, string stringContent)
+        public async Task<string> PostAsync(string requestUri, string jsonContent)
         {
             Authenticate();
-            //var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-            var content = new StringContent(stringContent);
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
             var result = await _client.PostAsync(requestUri, content);
             return await result.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> PutAsync(string requestUri, string stringContent)
+        public async Task<string> PutAsync(string requestUri, string jsonContent)
         {
             Authenticate();
-            //var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-            var content = new StringContent(stringContent);
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
             var result = await _client.PutAsync(requestUri, content);
             return await result.Content.ReadAsStringAsync();
         }
