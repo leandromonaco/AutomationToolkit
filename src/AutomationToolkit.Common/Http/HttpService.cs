@@ -16,7 +16,7 @@ namespace AutomationToolkit.Common.Http
 
         private void Authenticate()
         {
-            if (AuthenticationToken == null)
+            if (string.IsNullOrEmpty(AuthenticationToken))
             {
                 _client = new HttpClient(new HttpClientHandler() { UseDefaultCredentials = true });
             }

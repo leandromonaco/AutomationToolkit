@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Common", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Proget", "src\AutomationToolkit.Proget\AutomationToolkit.Proget.csproj", "{D27152AA-DCF3-4220-B916-984B09497AC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationToolkit.SonaType", "src\AutomationToolkit.SonaType\AutomationToolkit.SonaType.csproj", "{E7F08A57-6051-49FF-A95E-C165325DE533}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.SonaType", "src\AutomationToolkit.SonaType\AutomationToolkit.SonaType.csproj", "{E7F08A57-6051-49FF-A95E-C165325DE533}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationToolkit.AzDevOps", "src\AutomationToolkit.AzDevOps\AutomationToolkit.AzDevOps.csproj", "{A88A59F5-468B-423E-9CB6-C57F6B5C9A15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E7F08A57-6051-49FF-A95E-C165325DE533}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7F08A57-6051-49FF-A95E-C165325DE533}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7F08A57-6051-49FF-A95E-C165325DE533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A88A59F5-468B-423E-9CB6-C57F6B5C9A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A88A59F5-468B-423E-9CB6-C57F6B5C9A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A88A59F5-468B-423E-9CB6-C57F6B5C9A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A88A59F5-468B-423E-9CB6-C57F6B5C9A15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -32,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\AutomationToolkit.AzDevOps\AutomationToolkit.AzDevOps.csproj" />
     <ProjectReference Include="..\..\src\AutomationToolkit.Octopus\AutomationToolkit.Octopus.csproj" />
     <ProjectReference Include="..\..\src\AutomationToolkit.Proget\AutomationToolkit.Proget.csproj" />
     <ProjectReference Include="..\..\src\AutomationToolkit.SonaType\AutomationToolkit.SonaType.csproj" />
