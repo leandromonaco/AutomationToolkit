@@ -1,7 +1,9 @@
 ﻿using AutomationToolkit.AzDevOps.Model.Branch;
+using AutomationToolkit.AzDevOps.Model.Build;
 using AutomationToolkit.AzDevOps.Model.Commit;
 using AutomationToolkit.AzDevOps.Model.PullRequest;
 using AutomationToolkit.AzDevOps.Model.Repository;
+using AutomationToolkit.AzDevOps.Model.TestRun;
 using AutomationToolkit.Common.Http;
 using Newtonsoft.Json;
 using System;
@@ -23,6 +25,13 @@ namespace AutomationToolkit.AzDevOps
             _baseUrl = baseUrl;
             _httpService = new HttpHostBuilder().HttpService;
             _httpService.AuthenticationToken = apiKey;
+        }
+
+        public async Task<List<AzDevOpsCodeRepository>> GetRepositoriesAsync()
+        {
+            var response = await _httpService.GetAsync($"{_baseUrl}/git/repositories");
+            var azureDevOpsRepositories = JsonConvert.DeserializeObject<AzDevOpsCodeRepositories>(response);
+            return azureDevOpsRepositories.Value;
         }
 
         public async Task<AzDevOpsCodeRepository> GetRepositoryAsync(string repositoryName)
@@ -50,17 +59,62 @@ namespace AutomationToolkit.AzDevOps
             return azureDevOpsCommits.Value;
         }
 
-        public async Task<List<AzDevOpsPullRequest>> GetPullRequestsAsync(string repositoryId, bool isPullRequestCompleted)
+        /// <summary>
+        /// https://docs.microsoft.com/en-us/rest/api/azure/devops/build/definitions/list?view=azure-devops-rest-6.0
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<AzDevOpsBuildDefinition>> GetBuildDefinitionsAsync(bool includeAllProperties, bool includeLatestBuilds)
+        {
+            var response = await _httpService.GetAsync($"{_baseUrl}/build/definitions?includeAllProperties={includeAllProperties}&includeLatestBuilds={includeLatestBuilds}");
+            var buildDefinitions = JsonConvert.DeserializeObject<AzDevOpsBuildDefinitions>(response);
+            return buildDefinitions.Value;
+        }
+
+        /// <summary>
+        /// https://docs.microsoft.com/en-us/rest/api/azure/devops/test/runs/list?view=azure-devops-rest-6.0
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<AzDevOpsTestRun>> GetTestRunsAsync(bool includeRunDetails)
+        {
+            var response = await _httpService.GetAsync($"{_baseUrl}/test/runs?includeRunDetails={includeRunDetails}");
+            var testRuns = JsonConvert.DeserializeObject<AzDevOpsTestRuns>(response);
+            return testRuns.Value;
+        }
+
+        public async Task<List<AzDevOpsBuild>> GetBuildsAsync()
+        {
+            var response = await _httpService.GetAsync($"{_baseUrl}/build/builds");
+            var builds = JsonConvert.DeserializeObject<AzDevOpsBuilds>(response);
+            return builds.Value;
+        }
+
+        public async Task<AzDevOpsBuild> GetBuildAsync(string buildId)
+        {
+            var response = await _httpService.GetAsync($"{_baseUrl}/build/builds/{buildId}");
+            var build = JsonConvert.DeserializeObject<AzDevOpsBuild>(response);
+            return build;
+        }
+
+        public async Task GetUsersAsync()
+        {
+            var response = await _httpService.GetAsync($"{_baseUrl}/graph/users");
+        }
+
+        public async Task<List<AzDevOpsPullRequest>> GetPullRequestsAsync(string? repositoryId = null, bool? isPullRequestCompleted = null)
         {
             string response;
 
-            if (isPullRequestCompleted)
+            if (isPullRequestCompleted.HasValue && isPullRequestCompleted.Value.Equals(true))
             {
                 response = await _httpService.GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/pullrequests?searchCriteria.status=completed");
             }
-            else
+            else if (isPullRequestCompleted.HasValue && isPullRequestCompleted.Value.Equals(false))
             {
                 response = await _httpService.GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/pullrequests");
+            }
+            else
+            {
+                response = await _httpService.GetAsync($"{_baseUrl}/git/pullrequests");
             }
 
             return JsonConvert.DeserializeObject<AzDevOpsPullRequests>(response).Value;
