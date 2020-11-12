@@ -1,0 +1,36 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Pack
+      working-directory: ./src/AutomationToolkit.Common/
+      run: dotnet pack AutomationToolkit.Common.csproj --output nuget-packages --configuration Release
+    - name: Push
+      working-directory: ./src/AutomationToolkit.Common/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    - name: Pack
+      working-directory: ./src/AutomationToolkit.AzDevOps/
+      run: dotnet pack AutomationToolkit.AzDevOps.csproj --output nuget-packages --configuration Release
+    - name: Push
+      working-directory: ./src/AutomationToolkit.AzDevOps/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      
