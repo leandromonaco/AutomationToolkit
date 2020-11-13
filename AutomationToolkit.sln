@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Proget", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.SonaType", "src\AutomationToolkit.SonaType\AutomationToolkit.SonaType.csproj", "{E7F08A57-6051-49FF-A95E-C165325DE533}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationToolkit.AzDevOps", "src\AutomationToolkit.AzDevOps\AutomationToolkit.AzDevOps.csproj", "{A88A59F5-468B-423E-9CB6-C57F6B5C9A15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.AzDevOps", "src\AutomationToolkit.AzDevOps\AutomationToolkit.AzDevOps.csproj", "{A88A59F5-468B-423E-9CB6-C57F6B5C9A15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Confluence", "src\AutomationToolkit.Confluence\AutomationToolkit.Confluence.csproj", "{8FC8AAB9-9CE1-4F0B-BFE9-71F343888338}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A88A59F5-468B-423E-9CB6-C57F6B5C9A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A88A59F5-468B-423E-9CB6-C57F6B5C9A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A88A59F5-468B-423E-9CB6-C57F6B5C9A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FC8AAB9-9CE1-4F0B-BFE9-71F343888338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC8AAB9-9CE1-4F0B-BFE9-71F343888338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC8AAB9-9CE1-4F0B-BFE9-71F343888338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC8AAB9-9CE1-4F0B-BFE9-71F343888338}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

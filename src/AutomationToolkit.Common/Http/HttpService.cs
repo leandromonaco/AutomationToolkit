@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,20 +17,28 @@ namespace AutomationToolkit.Common.Http
 
         private void Authenticate()
         {
-            if (string.IsNullOrEmpty(AuthenticationToken))
+            _client = new HttpClient(new HttpClientHandler());
+
+            switch (AuthType)
             {
-                _client = new HttpClient(new HttpClientHandler() { UseDefaultCredentials = true });
-            }
-            else
-            {
-                _client = new HttpClient(new HttpClientHandler());
-                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthenticationToken);
-                _client.DefaultRequestHeaders.Add("X-Octopus-ApiKey", AuthenticationToken);
+                case AuthenticationType.Basic:
+                    _client.DefaultRequestHeaders.Add("Authorization", $"Basic {AuthenticationToken}");
+                    break;
+                case AuthenticationType.Bearer:
+                    _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthenticationToken);
+                    break;
+                case AuthenticationType.DefaultCredentials:
+                    _client = new HttpClient(new HttpClientHandler() { UseDefaultCredentials = true });
+                    break;
+                case AuthenticationType.Octopus:
+                    _client.DefaultRequestHeaders.Add("X-Octopus-ApiKey", AuthenticationToken);
+                    break;
             }
         }
 
 
         public string AuthenticationToken { get; set; }
+        public AuthenticationType AuthType { get; set; }
 
         public async Task<string> GetAsync(string requestUri)
         {

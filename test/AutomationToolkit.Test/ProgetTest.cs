@@ -19,7 +19,7 @@ namespace AutomationToolkit.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _progetRepository = new ProgetRepository(_configuration["Proget:Url"], _configuration["Proget:Key"]);
+            _progetRepository = new ProgetRepository(_configuration["Proget:Url"], _configuration["Proget:Key"], Common.Http.AuthenticationType.Bearer);
         }
 
         [Fact]

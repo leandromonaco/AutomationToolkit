@@ -12,12 +12,13 @@ namespace Octopus.Repository
         private string _spaceId;
         private IHttpService _httpService;
 
-        public OctopusRepository(string baseUrl, string apiKey, string spaceId)
+        public OctopusRepository(string baseUrl, string apiKey, string spaceId, AuthenticationType authType)
         {
             _baseUrl = baseUrl;
             _spaceId = spaceId;
             _httpService = new HttpHostBuilder().HttpService;
             _httpService.AuthenticationToken = apiKey;
+            _httpService.AuthType = authType;
         }
 
         public async Task<List<OctopusEnvironment>> GetEnvironmentsAsync()

@@ -13,12 +13,13 @@ namespace AutomationToolkit.Proget
         private string _apiKey;
         private IHttpService _httpService;
 
-        public ProgetRepository(string baseUrl, string apiKey)
+        public ProgetRepository(string baseUrl, string apiKey, AuthenticationType authType)
         {
             _baseUrl = baseUrl;
             _apiKey = apiKey;
             _httpService = new HttpHostBuilder().HttpService;
             _httpService.AuthenticationToken = apiKey;
+            _httpService.AuthType = authType;
         }
 
         public async Task<List<ProgetPackage>> GetPromotionsAsync(string sourceFeed, string targetFeed)

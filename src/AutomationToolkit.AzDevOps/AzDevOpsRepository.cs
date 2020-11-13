@@ -20,11 +20,12 @@ namespace AutomationToolkit.AzDevOps
         private string _baseUrl;
         private IHttpService _httpService;
 
-        public AzDevOpsRepository(string baseUrl, string apiKey)
+        public AzDevOpsRepository(string baseUrl, string apiKey, AuthenticationType authType)
         {
             _baseUrl = baseUrl;
             _httpService = new HttpHostBuilder().HttpService;
             _httpService.AuthenticationToken = apiKey;
+            _httpService.AuthType = authType;
         }
 
         public async Task<List<AzDevOpsCodeRepository>> GetRepositoriesAsync()
