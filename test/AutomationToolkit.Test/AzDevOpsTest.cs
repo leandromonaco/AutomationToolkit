@@ -2,6 +2,7 @@
 using AutomationToolkit.SonaType;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -48,6 +49,24 @@ namespace AutomationToolkit.Test
             var builds = await _azDevOpsTestRepository.GetBuildsAsync();
             var build = await _azDevOpsTestRepository.GetBuildAsync(builds[0].Id);
             await _azDevOpsTestRepository.GetUsersAsync();
+        }
+
+        [Fact]
+        async Task GetPullRequests()
+        {
+            var completePRs = await _azDevOpsTestRepository.GetPullRequestsAsync(true, 1000); //limit is 1000
+            var completePRs2020 = completePRs.Where(pr => pr.CreationDate.Date.Year.Equals(2020)).ToList();
+        }
+
+        [Fact]
+        async Task GetCommits()
+        {
+            var repositoryNames = new List<string>() {"Misc"};
+            foreach (var repoName in repositoryNames)
+            {
+                var repository = await _azDevOpsTestRepository.GetRepositoryAsync(repoName);
+                var commits = await _azDevOpsTestRepository.GetCommitsAsync(repository.Id, "master", new DateTime(2020, 1, 1), new DateTime(2020, 12, 31), 1000);
+            }
         }
     }
 }

@@ -49,13 +49,13 @@ namespace AutomationToolkit.AzDevOps
             return azureDevOpsBranches.Value;
         }
 
-        public async Task<List<AzDevOpsCommit>> GetCommitsAsync(string repositoryId, string branchName, DateTime from, DateTime to)
+        public async Task<List<AzDevOpsCommit>> GetCommitsAsync(string repositoryId, string branchName, DateTime from, DateTime to, int numberOfRecords)
         {
             //Get Commits in the last month
             var startDateStr = from.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture);
             var finishDateStr = to.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture);
 
-            var response = await _httpService.GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/commits?searchCriteria.itemVersion.version={HttpUtility.UrlEncode(branchName)}&searchCriteria.toDate={finishDateStr}&searchCriteria.fromDate={startDateStr}&searchCriteria.includePushData=true&$top=50");
+            var response = await _httpService.GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/commits?searchCriteria.itemVersion.version={HttpUtility.UrlEncode(branchName)}&searchCriteria.toDate={finishDateStr}&searchCriteria.fromDate={startDateStr}&searchCriteria.includePushData=true&$top={numberOfRecords}");
             var azureDevOpsCommits = JsonConvert.DeserializeObject<AzDevOpsCommits>(response);
             return azureDevOpsCommits.Value;
         }
@@ -101,21 +101,33 @@ namespace AutomationToolkit.AzDevOps
             var response = await _httpService.GetAsync($"{_baseUrl}/graph/users");
         }
 
-        public async Task<List<AzDevOpsPullRequest>> GetPullRequestsAsync(string? repositoryId = null, bool? isPullRequestCompleted = null)
+        public async Task<List<AzDevOpsPullRequest>> GetPullRequestsAsync(string repositoryId, bool isPullRequestCompleted)
         {
             string response;
 
-            if (isPullRequestCompleted.HasValue && isPullRequestCompleted.Value.Equals(true))
+            if (isPullRequestCompleted)
             {
                 response = await _httpService.GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/pullrequests?searchCriteria.status=completed");
             }
-            else if (isPullRequestCompleted.HasValue && isPullRequestCompleted.Value.Equals(false))
+            else
             {
                 response = await _httpService.GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/pullrequests");
             }
+
+            return JsonConvert.DeserializeObject<AzDevOpsPullRequests>(response).Value;
+        }
+
+        public async Task<List<AzDevOpsPullRequest>> GetPullRequestsAsync(bool isPullRequestCompleted, int numberOfRecords)
+        {
+            string response;
+
+            if (isPullRequestCompleted)
+            {
+                response = await _httpService.GetAsync($"{_baseUrl}/git/pullrequests?$top={numberOfRecords}&searchCriteria.status=completed");
+            }
             else
             {
-                response = await _httpService.GetAsync($"{_baseUrl}/git/pullrequests");
+                response = await _httpService.GetAsync($"{_baseUrl}/git/pullrequests?$top={numberOfRecords}");
             }
 
             return JsonConvert.DeserializeObject<AzDevOpsPullRequests>(response).Value;
