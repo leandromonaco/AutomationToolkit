@@ -5,6 +5,7 @@
         Basic,
         Bearer,
         DefaultCredentials,
-        Octopus
+        Octopus, 
+        Exchange
     }
 }

@@ -34,7 +34,18 @@ namespace AutomationToolkit.Test
         [Fact]
         async Task UpdatePage()
         {
-            await _confluenceTestRepository.UpdatePage("92374654", "<b>updated from api test 5</b>", "updated from api test 5");
+            await _confluenceTestRepository.UpdatePage("92374654", "<b>updated from api test</b>", "updated from api test");
+        }
+
+
+        [Fact]
+        async Task SearchPages()
+        {
+            //var results = await _confluenceTestRepository.SearchContentByLabelAsync("tagged");
+            //var results = await _confluenceTestRepository.SearchContentByCreator("username");
+            //var results = await _confluenceTestRepository.SearchContentByContributor("username");
+            //var results = await _confluenceTestRepository.SearchContentByParentId("26343");
+            var results = await _confluenceTestRepository.SearchContentBySpace("SpaceKey");
         }
     }
 }
