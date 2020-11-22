@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Confluenc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Exchange", "src\AutomationToolkit.Exchange\AutomationToolkit.Exchange\AutomationToolkit.Exchange.csproj", "{5C49A7BF-0F5A-48C8-B8A9-5F1D483DD24F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.VersionOne", "src\AutomationToolkit.VersionOne\AutomationToolkit.VersionOne.csproj", "{5328BBB7-558B-472A-9C6A-77E7C8603FD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,14 @@ Global
 		{5C49A7BF-0F5A-48C8-B8A9-5F1D483DD24F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C49A7BF-0F5A-48C8-B8A9-5F1D483DD24F}.Release|x86.ActiveCfg = Release|Any CPU
 		{5C49A7BF-0F5A-48C8-B8A9-5F1D483DD24F}.Release|x86.Build.0 = Release|Any CPU
+		{5328BBB7-558B-472A-9C6A-77E7C8603FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5328BBB7-558B-472A-9C6A-77E7C8603FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5328BBB7-558B-472A-9C6A-77E7C8603FD0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5328BBB7-558B-472A-9C6A-77E7C8603FD0}.Debug|x86.Build.0 = Debug|Any CPU
+		{5328BBB7-558B-472A-9C6A-77E7C8603FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5328BBB7-558B-472A-9C6A-77E7C8603FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5328BBB7-558B-472A-9C6A-77E7C8603FD0}.Release|x86.ActiveCfg = Release|Any CPU
+		{5328BBB7-558B-472A-9C6A-77E7C8603FD0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
