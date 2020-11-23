@@ -1,4 +1,5 @@
-﻿using AutomationToolkit.Common.Http;
+﻿using AutomationToolkit.Common;
+using AutomationToolkit.Common.Http;
 using AutomationToolkit.Confluence.Model;
 using Newtonsoft.Json;
 using System;
@@ -11,17 +12,10 @@ namespace AutomationToolkit.Confluence
     /// <summary>
     /// https://docs.atlassian.com/confluence/REST/latest/
     /// </summary>
-    public class ConfluenceRepository
+    public class ConfluenceRepository : BaseRepository
     {
-        private string _baseUrl;
-        private IHttpService _httpService;
-
-        public ConfluenceRepository(string baseUrl, string apiKey, AuthenticationType authType)//, string user, string password, string domain)
+        public ConfluenceRepository(string baseUrl, string apiKey, AuthenticationType authType) : base(baseUrl, apiKey, authType)
         {
-            _baseUrl = baseUrl;
-            _httpService = new HttpHostBuilder().HttpService;
-            _httpService.AuthenticationToken = apiKey;
-            _httpService.AuthType = authType;
         }
 
         public async Task UpdatePage(string pageId, string htmlContent, string comment)

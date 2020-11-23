@@ -4,22 +4,14 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using AutomationToolkit.VersionOne.Model;
 using AutomationToolkit.Common.Http;
+using AutomationToolkit.Common;
 
 namespace AutomationToolkit.VersionOne
 {
-    public class VersionOneRepository
+    public class VersionOneRepository: BaseRepository
     {
-        private IHttpService _httpService;
-        private string _baseUrl;
-        private string _apiKey;
-
-        public VersionOneRepository(string baseUrl, string apiKey, AuthenticationType authType)
+        public VersionOneRepository(string baseUrl, string apiKey, AuthenticationType authType) : base(baseUrl, apiKey, authType)
         {
-            _baseUrl = baseUrl;
-            _apiKey = apiKey;
-            _httpService = new HttpHostBuilder().HttpService;
-            _httpService.AuthenticationToken = apiKey;
-            _httpService.AuthType = authType;
         }
         public async Task<List<VersionOneWorkItem>> RetrieveDefectsByUserAsync(string email)
         {

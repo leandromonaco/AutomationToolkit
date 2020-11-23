@@ -1,4 +1,5 @@
-﻿using AutomationToolkit.Common.Http;
+﻿using AutomationToolkit.Common;
+using AutomationToolkit.Common.Http;
 using AutomationToolkit.SonaType.Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -6,19 +7,10 @@ using System.Threading.Tasks;
 
 namespace AutomationToolkit.SonaType
 {
-    public class SonaTypeRepository
+    public class SonaTypeRepository : BaseRepository
     {
-        private string _baseUrl;
-        private string _apiKey;
-        private IHttpService _httpService;
-
-        public SonaTypeRepository(string baseUrl, string apiKey, AuthenticationType authType)
+        public SonaTypeRepository(string baseUrl, string apiKey, AuthenticationType authType) : base(baseUrl, apiKey, authType)
         {
-            _baseUrl = baseUrl;
-            _apiKey = apiKey;
-            _httpService = new HttpHostBuilder().HttpService;
-            _httpService.AuthenticationToken = apiKey;
-            _httpService.AuthType = authType;
         }
 
         public async Task<List<SonaTypeComponentScanResult>> ScanComponent(string coordinates)

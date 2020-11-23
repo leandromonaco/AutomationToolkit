@@ -1,4 +1,5 @@
-﻿using AutomationToolkit.Common.Http;
+﻿using AutomationToolkit.Common;
+using AutomationToolkit.Common.Http;
 using Newtonsoft.Json;
 using Octopus.Repository.Model;
 using System.Collections.Generic;
@@ -6,19 +7,13 @@ using System.Threading.Tasks;
 
 namespace Octopus.Repository
 {
-    public class OctopusRepository
+    public class OctopusRepository : BaseRepository
     {
-        private string _baseUrl;
         private string _spaceId;
-        private IHttpService _httpService;
 
-        public OctopusRepository(string baseUrl, string apiKey, string spaceId, AuthenticationType authType)
+        public OctopusRepository(string baseUrl, string apiKey, string spaceId, AuthenticationType authType) : base(baseUrl, apiKey, authType)
         {
-            _baseUrl = baseUrl;
             _spaceId = spaceId;
-            _httpService = new HttpHostBuilder().HttpService;
-            _httpService.AuthenticationToken = apiKey;
-            _httpService.AuthType = authType;
         }
 
         public async Task<List<OctopusEnvironment>> GetEnvironmentsAsync()

@@ -7,7 +7,6 @@ namespace AutomationToolkit.Common.Http
         Task<string> GetAsync(string requestUri);
         Task<string> PostAsync(string requestUri, string jsonContent);
         Task<string> PutAsync(string requestUri, string jsonContent);
-        string AuthenticationToken { get; set; }
-        public AuthenticationType AuthType { get; set; }
+        void Authenticate(string apiKey, AuthenticationType authType);
     }
 }

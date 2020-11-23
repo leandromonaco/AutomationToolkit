@@ -5,7 +5,8 @@
         Basic,
         Bearer,
         DefaultCredentials,
-        Octopus, 
+        Octopus,
+        Proget,
         Exchange
     }
 }

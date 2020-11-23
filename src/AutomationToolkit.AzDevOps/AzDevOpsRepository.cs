@@ -4,6 +4,7 @@ using AutomationToolkit.AzDevOps.Model.Commit;
 using AutomationToolkit.AzDevOps.Model.PullRequest;
 using AutomationToolkit.AzDevOps.Model.Repository;
 using AutomationToolkit.AzDevOps.Model.TestRun;
+using AutomationToolkit.Common;
 using AutomationToolkit.Common.Http;
 using Newtonsoft.Json;
 using System;
@@ -15,17 +16,10 @@ using System.Web;
 
 namespace AutomationToolkit.AzDevOps
 {
-    public class AzDevOpsRepository
+    public class AzDevOpsRepository : BaseRepository
     {
-        private string _baseUrl;
-        private IHttpService _httpService;
-
-        public AzDevOpsRepository(string baseUrl, string apiKey, AuthenticationType authType)
+        public AzDevOpsRepository(string baseUrl, string apiKey, AuthenticationType authType) : base(baseUrl, apiKey, authType)
         {
-            _baseUrl = baseUrl;
-            _httpService = new HttpHostBuilder().HttpService;
-            _httpService.AuthenticationToken = apiKey;
-            _httpService.AuthType = authType;
         }
 
         public async Task<List<AzDevOpsCodeRepository>> GetRepositoriesAsync()
