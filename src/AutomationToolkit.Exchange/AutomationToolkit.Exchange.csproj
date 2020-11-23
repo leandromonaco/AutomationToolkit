@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AutomationToolkit.Common\AutomationToolkit.Common.csproj" />
+    <ProjectReference Include="..\AutomationToolkit.Common\AutomationToolkit.Common.csproj" />
   </ItemGroup>
 
 </Project>
