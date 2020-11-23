@@ -21,12 +21,14 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
+      
     - name: Pack
       working-directory: ./src/AutomationToolkit.Common/
       run: dotnet pack AutomationToolkit.Common.csproj --output nuget-packages --configuration Release
     - name: Push
       working-directory: ./src/AutomationToolkit.Common/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      
     - name: Pack
       working-directory: ./src/AutomationToolkit.AzDevOps/
       run: dotnet pack AutomationToolkit.AzDevOps.csproj --output nuget-packages --configuration Release
@@ -34,3 +36,44 @@ jobs:
       working-directory: ./src/AutomationToolkit.AzDevOps/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
       
+    - name: Pack
+      working-directory: ./src/AutomationToolkit.VersionOne/
+      run: dotnet pack AutomationToolkit.VersionOne.csproj --output nuget-packages --configuration Release
+    - name: Push
+      working-directory: ./src/AutomationToolkit.VersionOne/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      
+    - name: Pack
+      working-directory: ./src/AutomationToolkit.Confluence/
+      run: dotnet pack AutomationToolkit.Confluence.csproj --output nuget-packages --configuration Release
+    - name: Push
+      working-directory: ./src/AutomationToolkit.Confluence/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      
+    - name: Pack
+      working-directory: ./src/AutomationToolkit.Proget/
+      run: dotnet pack AutomationToolkit.Proget.csproj --output nuget-packages --configuration Release
+    - name: Push
+      working-directory: ./src/AutomationToolkit.Proget/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      
+    - name: Pack
+      working-directory: ./src/AutomationToolkit.SonaType/
+      run: dotnet pack AutomationToolkit.SonaType.csproj --output nuget-packages --configuration Release
+    - name: Push
+      working-directory: ./src/AutomationToolkit.SonaType/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      
+    - name: Pack
+      working-directory: ./src/AutomationToolkit.Octopus/
+      run: dotnet pack AutomationToolkit.Octopus.csproj --output nuget-packages --configuration Release
+    - name: Push
+      working-directory: ./src/AutomationToolkit.Octopus/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      
+    - name: Pack
+      working-directory: ./src/AutomationToolkit.Exchange/
+      run: dotnet pack AutomationToolkit.Exchange.csproj --output nuget-packages --configuration Release
+    - name: Push
+      working-directory: ./src/AutomationToolkit.Exchange/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
