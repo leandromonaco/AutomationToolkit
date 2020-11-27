@@ -6,6 +6,8 @@
     <IsPackable>false</IsPackable>
 
     <UserSecretsId>cf9af699-d3c2-4090-8231-fd3a1cb45a5f</UserSecretsId>
+
+    <Authors>Leandro Monaco</Authors>
   </PropertyGroup>
 
   <ItemGroup>
