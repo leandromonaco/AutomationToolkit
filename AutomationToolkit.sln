@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.VersionOn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Exchange", "src\AutomationToolkit.Exchange\AutomationToolkit.Exchange.csproj", "{21CB0691-864C-4E09-9E6C-2CCDFC438174}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationToolkit.Fortify", "src\AutomationToolkit.Fortify\AutomationToolkit.Fortify.csproj", "{835E8ABF-0223-46C0-8D34-92BCF2F24E44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,14 @@ Global
 		{21CB0691-864C-4E09-9E6C-2CCDFC438174}.Release|Any CPU.Build.0 = Release|Any CPU
 		{21CB0691-864C-4E09-9E6C-2CCDFC438174}.Release|x86.ActiveCfg = Release|Any CPU
 		{21CB0691-864C-4E09-9E6C-2CCDFC438174}.Release|x86.Build.0 = Release|Any CPU
+		{835E8ABF-0223-46C0-8D34-92BCF2F24E44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{835E8ABF-0223-46C0-8D34-92BCF2F24E44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{835E8ABF-0223-46C0-8D34-92BCF2F24E44}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{835E8ABF-0223-46C0-8D34-92BCF2F24E44}.Debug|x86.Build.0 = Debug|Any CPU
+		{835E8ABF-0223-46C0-8D34-92BCF2F24E44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{835E8ABF-0223-46C0-8D34-92BCF2F24E44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{835E8ABF-0223-46C0-8D34-92BCF2F24E44}.Release|x86.ActiveCfg = Release|Any CPU
+		{835E8ABF-0223-46C0-8D34-92BCF2F24E44}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

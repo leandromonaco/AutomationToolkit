@@ -1,5 +1,4 @@
 ﻿using AutomationToolkit.AzDevOps;
-using AutomationToolkit.SonaType;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -9,9 +8,7 @@ using Xunit;
 
 namespace AutomationToolkit.Test
 {
-    /// <summary>
-    /// https://ossindex.sonatype.org/doc/rest
-    /// </summary>
+
     public class AzDevOpsTest
     {
         IConfiguration _configuration;
@@ -52,11 +49,32 @@ namespace AutomationToolkit.Test
         }
 
         [Fact]
+        async Task GetBranches()
+        {
+            var repository = await _azDevOpsTestRepository.GetRepositoryAsync("Misc");
+            var branches = await _azDevOpsTestRepository.GetBranchesAsync(repository.Id);
+        }
+
+        [Fact]
         async Task GetPullRequests()
         {
             var completePRs = await _azDevOpsTestRepository.GetPullRequestsAsync(true, 1000); //limit is 1000
             var completePRs2020 = completePRs.Where(pr => pr.CreationDate.Date.Year.Equals(2020)).ToList();
         }
+
+        [Fact]
+        async Task GetPullRequestThreads()
+        {
+            var pullRequests = await _azDevOpsTestRepository.GetPullRequestsAsync(false, 1000); //limit is 1000
+
+            foreach (var pr in pullRequests)
+            {
+                pr.Threads = await _azDevOpsTestRepository.GetPullRequestThreadsAsync(pr.Repository.Id, pr.PullRequestId);
+                pr.Threads = pr.Threads.Where(t => t.Comments.Count(c => c.CommentType.Equals("text")) > 0).ToList();
+                //pr.Threads = pr.Threads.Where(t => t.Status.Equals("active")).ToList();
+            }
+        }
+   
 
         [Fact]
         async Task GetCommits()
