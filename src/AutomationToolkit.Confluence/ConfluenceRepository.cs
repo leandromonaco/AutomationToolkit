@@ -93,7 +93,7 @@ namespace AutomationToolkit.Confluence
         public async Task<List<ConfluencePageSearchResult>> SearchContentBySpace(string spaceKey)
         {
             var results = new List<ConfluencePageSearchResult>();
-            var response = await _httpService.GetAsync($"{_baseUrl}/content/search?limit=10000&cql=type=page%20and%20space.key='{spaceKey}'%20and%20(created%3E=%222018/12/31%22%20or%20lastModified%3E=%222018/12/31%22)&expand=history,history.lastUpdated");
+            var response = await _httpService.GetAsync($"{_baseUrl}/content/search?limit=10000&cql=type=page%20and%20space.key='{spaceKey}'&expand=history,history.lastUpdated");
             var wikiPageSearchResults = JsonConvert.DeserializeObject<ConfluencePageSearchResults>(response);
             results.AddRange(wikiPageSearchResults.Results);
             while (wikiPageSearchResults.Links.Next != null)

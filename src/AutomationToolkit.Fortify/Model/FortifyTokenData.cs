@@ -1,6 +1,6 @@
 ﻿namespace AutomationToolkit.Fortify.Model
 {
-    public class FortifyAuthData
+    public class FortifyTokenData
     {
         public string Token { get; set; }
     }

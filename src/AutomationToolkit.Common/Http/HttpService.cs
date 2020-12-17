@@ -12,13 +12,11 @@ namespace AutomationToolkit.Common.Http
 
         public HttpService(IHttpClientFactory httpClient)
         {
-
+            _client = new HttpClient(new HttpClientHandler());
         }
 
         public void Authenticate(string apiKey, AuthenticationType authType)
         {
-            _client = new HttpClient(new HttpClientHandler());
-
             switch (authType)
             {
                 case AuthenticationType.Basic:
@@ -30,11 +28,14 @@ namespace AutomationToolkit.Common.Http
                 case AuthenticationType.DefaultCredentials:
                     _client = new HttpClient(new HttpClientHandler() { UseDefaultCredentials = true });
                     break;
-                case AuthenticationType.Octopus:
+                case AuthenticationType.OctopusKey:
                     _client.DefaultRequestHeaders.Add("X-Octopus-ApiKey", apiKey);
                     break;
-                case AuthenticationType.Proget:
+                case AuthenticationType.ProgetKey:
                     _client.DefaultRequestHeaders.Add("X-ApiKey", apiKey);
+                    break;
+                case AuthenticationType.FortifyToken:
+                    _client.DefaultRequestHeaders.Add("Authorization", $"FortifyToken {apiKey}");
                     break;
                 case AuthenticationType.Exchange:
                     //TODO

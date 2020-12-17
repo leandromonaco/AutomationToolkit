@@ -13,5 +13,10 @@ namespace AutomationToolkit.Common
             _httpService = new HttpHostBuilder().HttpService;
             _httpService.Authenticate(apiKey, authType);
         }
+
+        public BaseRepository()
+        {
+            _httpService = new HttpHostBuilder().HttpService;
+        }
     }
 }
