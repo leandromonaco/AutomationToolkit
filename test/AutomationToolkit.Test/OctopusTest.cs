@@ -22,7 +22,7 @@ namespace AutomationToolkit.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _octopusRepository = new OctopusRepository(_configuration["Octopus:Url"], _configuration["Octopus:Key"], _configuration["Octopus:SpaceId"], Common.Http.AuthenticationType.Octopus);
+            _octopusRepository = new OctopusRepository(_configuration["Octopus:Url"], _configuration["Octopus:Key"], _configuration["Octopus:SpaceId"], Common.Http.AuthenticationType.OctopusKey);
         }
 
         [Fact]

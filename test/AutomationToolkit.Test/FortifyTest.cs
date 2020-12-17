@@ -9,6 +9,7 @@ namespace AutomationToolkit.Test
     {
         IConfiguration _configuration;
         FortifyRepository _fortifyTestRepository;
+        FortifyRepository _fortifyTestRepository2;
 
         public FortifyTest()
         {
@@ -23,10 +24,22 @@ namespace AutomationToolkit.Test
         }
 
         [Fact]
-        async Task GetUnifiedLoginToken()
+        async Task RunReport()
         {
-            var unifiedLoginToken = await _fortifyTestRepository.GetUnifiedLoginToken();
-            
+            var unifiedLoginToken = await _fortifyTestRepository.GetUnifiedLoginTokenAsync();
+
+            _fortifyTestRepository2 = new FortifyRepository(_configuration["Fortify:Url"], unifiedLoginToken, Common.Http.AuthenticationType.FortifyToken);
+
+            var projects = await _fortifyTestRepository2.GetProjectsAsync();
+
+            foreach (var project in projects)
+            {
+                var versions = await _fortifyTestRepository2.GetProjectVersionsAsync(project.Id);
+                foreach (var projectVersion in versions)
+                {
+                    var issues = await _fortifyTestRepository2.GetIssuesAsync(projectVersion.Id);
+                }
+            }
         }
     }
 }
