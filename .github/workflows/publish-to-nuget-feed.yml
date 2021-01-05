@@ -77,3 +77,10 @@ jobs:
     - name: Push
       working-directory: ./src/AutomationToolkit.Exchange/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+    - name: Pack
+      working-directory: ./src/AutomationToolkit.Fortify/
+      run: dotnet pack AutomationToolkit.Fortify.csproj --output nuget-packages --configuration Release
+    - name: Push
+      working-directory: ./src/AutomationToolkit.Fortify/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
