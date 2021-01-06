@@ -37,7 +37,6 @@
     <ProjectReference Include="..\..\src\AutomationToolkit.AzDevOps\AutomationToolkit.AzDevOps.csproj" />
     <ProjectReference Include="..\..\src\AutomationToolkit.Confluence\AutomationToolkit.Confluence.csproj" />
     <ProjectReference Include="..\..\src\AutomationToolkit.Exchange\AutomationToolkit.Exchange.csproj" />
-    <ProjectReference Include="..\..\src\AutomationToolkit.Exchange\AutomationToolkit.Exchange\AutomationToolkit.Exchange.csproj" />
     <ProjectReference Include="..\..\src\AutomationToolkit.Fortify\AutomationToolkit.Fortify.csproj" />
     <ProjectReference Include="..\..\src\AutomationToolkit.Octopus\AutomationToolkit.Octopus.csproj" />
     <ProjectReference Include="..\..\src\AutomationToolkit.Proget\AutomationToolkit.Proget.csproj" />

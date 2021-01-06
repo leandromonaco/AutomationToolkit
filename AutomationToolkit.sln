@@ -21,7 +21,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.VersionOn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Exchange", "src\AutomationToolkit.Exchange\AutomationToolkit.Exchange.csproj", "{21CB0691-864C-4E09-9E6C-2CCDFC438174}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationToolkit.Fortify", "src\AutomationToolkit.Fortify\AutomationToolkit.Fortify.csproj", "{835E8ABF-0223-46C0-8D34-92BCF2F24E44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationToolkit.Fortify", "src\AutomationToolkit.Fortify\AutomationToolkit.Fortify.csproj", "{835E8ABF-0223-46C0-8D34-92BCF2F24E44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{4C149715-7592-46AA-830A-D7CA53AB1378}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
+		GitVersion.yml = GitVersion.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
