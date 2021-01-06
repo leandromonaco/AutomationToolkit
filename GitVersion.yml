@@ -7,6 +7,7 @@ branches:
     increment: Patch
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
+    source-branches: []
     is-source-branch-for: ['feature']
 
   feature:
