@@ -5,10 +5,7 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4C149715-7592-46AA-830A-D7CA53AB1378}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build.yml = .github\workflows\build.yml
-		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
 		GitVersion.yml = GitVersion.yml
-		.github\workflows\quality.yml = .github\workflows\quality.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationConnectors.AzDevOps", "src\AutomationConnectors.AzDevOps\AutomationConnectors.AzDevOps.csproj", "{3FDAABD7-3BBB-44F2-97CD-E17D53430CD8}"
@@ -34,6 +31,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{718E6441-7596-4FD5-9B36-A553D9722418}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pipelines", "pipelines", "{3CAE3E2E-0A81-424A-8F93-7329376B8753}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\CodeqlPipeline.yml = .github\workflows\CodeqlPipeline.yml
+		.github\workflows\NetCoreBuildPipeline.yml = .github\workflows\NetCoreBuildPipeline.yml
+		.github\workflows\SonarCloudPipeline.yml = .github\workflows\SonarCloudPipeline.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -138,6 +142,7 @@ Global
 		{CE7B5A0C-9F6E-49CE-9CDE-C43B104EBB67} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
 		{78544A58-BA47-4D74-A2DE-2BBE61270439} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
 		{5DB9C9DD-6F70-437C-B4E9-A1D857E3DB67} = {718E6441-7596-4FD5-9B36-A553D9722418}
+		{3CAE3E2E-0A81-424A-8F93-7329376B8753} = {4C149715-7592-46AA-830A-D7CA53AB1378}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F2044FB-EFF6-49A0-B157-BED6AA66BF0E}
