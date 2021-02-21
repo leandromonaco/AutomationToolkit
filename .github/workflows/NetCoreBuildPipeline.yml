@@ -45,73 +45,73 @@ jobs:
       run: dotnet build --configuration Release --no-restore
       
     - name: Pack
-      working-directory: ./src/AutomationToolkit.Common/
-      run: dotnet pack AutomationToolkit.Common.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      working-directory: ./src/AutomationConnectors.Common/
+      run: dotnet pack AutomationConnectors.Common.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
 
     - name: Push
-      working-directory: ./src/AutomationToolkit.Common/
+      working-directory: ./src/AutomationConnectors.Common/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Pack
-      working-directory: ./src/AutomationToolkit.AzDevOps/
-      run: dotnet pack AutomationToolkit.AzDevOps.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      working-directory: ./src/AutomationConnectors.AzDevOps/
+      run: dotnet pack AutomationConnectors.AzDevOps.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
     - name: Push
-      working-directory: ./src/AutomationToolkit.AzDevOps/
+      working-directory: ./src/AutomationConnectors.AzDevOps/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Pack
-      working-directory: ./src/AutomationToolkit.VersionOne/
-      run: dotnet pack AutomationToolkit.VersionOne.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      working-directory: ./src/AutomationConnectors.VersionOne/
+      run: dotnet pack AutomationConnectors.VersionOne.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
     - name: Push
-      working-directory: ./src/AutomationToolkit.VersionOne/
+      working-directory: ./src/AutomationConnectors.VersionOne/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Pack
-      working-directory: ./src/AutomationToolkit.Confluence/
-      run: dotnet pack AutomationToolkit.Confluence.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      working-directory: ./src/AutomationConnectors.Confluence/
+      run: dotnet pack AutomationConnectors.Confluence.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
     - name: Push
-      working-directory: ./src/AutomationToolkit.Confluence/
+      working-directory: ./src/AutomationConnectors.Confluence/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Pack
-      working-directory: ./src/AutomationToolkit.Proget/
-      run: dotnet pack AutomationToolkit.Proget.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      working-directory: ./src/AutomationConnectors.Proget/
+      run: dotnet pack AutomationConnectors.Proget.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
     - name: Push
-      working-directory: ./src/AutomationToolkit.Proget/
+      working-directory: ./src/AutomationConnectors.Proget/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Pack
-      working-directory: ./src/AutomationToolkit.SonaType/
-      run: dotnet pack AutomationToolkit.SonaType.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      working-directory: ./src/AutomationConnectors.SonaType/
+      run: dotnet pack AutomationConnectors.SonaType.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
     - name: Push
-      working-directory: ./src/AutomationToolkit.SonaType/
+      working-directory: ./src/AutomationConnectors.SonaType/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Pack
-      working-directory: ./src/AutomationToolkit.Octopus/
-      run: dotnet pack AutomationToolkit.Octopus.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      working-directory: ./src/AutomationConnectors.Octopus/
+      run: dotnet pack AutomationConnectors.Octopus.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
     - name: Push
-      working-directory: ./src/AutomationToolkit.Octopus/
+      working-directory: ./src/AutomationConnectors.Octopus/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Pack
-      working-directory: ./src/AutomationToolkit.Exchange/
-      run: dotnet pack AutomationToolkit.Exchange.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      working-directory: ./src/AutomationConnectors.Exchange/
+      run: dotnet pack AutomationConnectors.Exchange.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
     - name: Push
-      working-directory: ./src/AutomationToolkit.Exchange/
+      working-directory: ./src/AutomationConnectors.Exchange/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Pack
-      working-directory: ./src/AutomationToolkit.Fortify/
-      run: dotnet pack AutomationToolkit.Fortify.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      working-directory: ./src/AutomationConnectors.Fortify/
+      run: dotnet pack AutomationConnectors.Fortify.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
     - name: Push
-      working-directory: ./src/AutomationToolkit.Fortify/
+      working-directory: ./src/AutomationConnectors.Fortify/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
