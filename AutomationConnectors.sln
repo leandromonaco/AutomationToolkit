@@ -3,11 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{4C149715-7592-46AA-830A-D7CA53AB1378}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4C149715-7592-46AA-830A-D7CA53AB1378}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build.yml = .github\workflows\build.yml
 		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
 		GitVersion.yml = GitVersion.yml
+		.github\workflows\quality.yml = .github\workflows\quality.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationConnectors.AzDevOps", "src\AutomationConnectors.AzDevOps\AutomationConnectors.AzDevOps.csproj", "{3FDAABD7-3BBB-44F2-97CD-E17D53430CD8}"
@@ -29,6 +30,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationConnectors.VersionOne", "src\AutomationConnectors.VersionOne\AutomationConnectors.VersionOne.csproj", "{78544A58-BA47-4D74-A2DE-2BBE61270439}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationConnectors.Test", "test\AutomationConnectors.Test\AutomationConnectors.Test.csproj", "{5DB9C9DD-6F70-437C-B4E9-A1D857E3DB67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{718E6441-7596-4FD5-9B36-A553D9722418}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +126,18 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3FDAABD7-3BBB-44F2-97CD-E17D53430CD8} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
+		{A6BEDFAC-F9FE-41DB-A044-99305E7A9CB8} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
+		{500DF2A5-0DB0-4D20-A3AD-663692F37CFB} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
+		{746B8C13-7D16-48EF-A7AF-2FB73E63C95A} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
+		{332B6271-CE50-411C-8BEF-7D27E964D9BA} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
+		{CABCB7FA-DA27-40EF-93B4-934E6B237E52} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
+		{2894BFC2-406F-43EF-878F-7AFBF16A73D5} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
+		{CE7B5A0C-9F6E-49CE-9CDE-C43B104EBB67} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
+		{78544A58-BA47-4D74-A2DE-2BBE61270439} = {54F8C5C3-DA77-4A7C-B5CF-6586AF3A3D9F}
+		{5DB9C9DD-6F70-437C-B4E9-A1D857E3DB67} = {718E6441-7596-4FD5-9B36-A553D9722418}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F2044FB-EFF6-49A0-B157-BED6AA66BF0E}
