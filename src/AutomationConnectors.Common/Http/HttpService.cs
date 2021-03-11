@@ -15,6 +15,17 @@ namespace AutomationConnectors.Common.Http
             _client = new HttpClient(new HttpClientHandler());
         }
 
+        private TimeSpan _timeout;
+        public TimeSpan Timeout 
+        {
+          get => _timeout;
+          set 
+            {
+                _timeout = value;
+                _client.Timeout = _timeout;
+            } 
+        }
+
         public void Authenticate(string apiKey, AuthenticationType authType)
         {
             switch (authType)

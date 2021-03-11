@@ -1,4 +1,5 @@
 ﻿using AutomationConnectors.Common.Http;
+using System;
 
 namespace AutomationConnectors.Common
 {
@@ -17,6 +18,17 @@ namespace AutomationConnectors.Common
         public BaseConnector()
         {
             _httpService = new HttpHostBuilder().HttpService;
+        }
+
+        private TimeSpan _timeout;
+        public TimeSpan Timeout
+        {
+            get => _timeout;
+            set
+            {
+                _timeout = value;
+                _httpService.Timeout = _timeout;
+            }
         }
     }
 }
