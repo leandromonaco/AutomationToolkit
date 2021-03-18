@@ -44,74 +44,80 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
       
-    - name: Pack
+    - name: Common Connector - Pack
       working-directory: ./src/AutomationConnectors.Common/
       run: dotnet pack AutomationConnectors.Common.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
 
-    - name: Push
+    - name: Common Connector - Push
       working-directory: ./src/AutomationConnectors.Common/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-    - name: Pack
+    - name: AzDevOps Connector - Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.7
+      with:
+        useConfigFile: true
+        configFilePath: ./src/AutomationConnectors.AzDevOps/GitVersion.yml
+
+    - name: AzDevOps Connector - Pack
       working-directory: ./src/AutomationConnectors.AzDevOps/
       run: dotnet pack AutomationConnectors.AzDevOps.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
-    - name: Push
+    - name: AzDevOps Connector - Push
       working-directory: ./src/AutomationConnectors.AzDevOps/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-    - name: Pack
+    - name: VersionOne Connector - Pack
       working-directory: ./src/AutomationConnectors.VersionOne/
       run: dotnet pack AutomationConnectors.VersionOne.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
-    - name: Push
+    - name: VersionOne Connector - Push
       working-directory: ./src/AutomationConnectors.VersionOne/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-    - name: Pack
+    - name: Confluence Connector - Pack
       working-directory: ./src/AutomationConnectors.Confluence/
       run: dotnet pack AutomationConnectors.Confluence.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
-    - name: Push
+    - name: Confluence Connector - Push
       working-directory: ./src/AutomationConnectors.Confluence/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-    - name: Pack
+    - name: Proget Connector - Pack
       working-directory: ./src/AutomationConnectors.Proget/
       run: dotnet pack AutomationConnectors.Proget.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
-    - name: Push
+    - name: Proget Connector - Push
       working-directory: ./src/AutomationConnectors.Proget/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-    - name: Pack
+    - name: SonaType Connector - Pack
       working-directory: ./src/AutomationConnectors.SonaType/
       run: dotnet pack AutomationConnectors.SonaType.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
-    - name: Push
+    - name: SonaType Connector - Push
       working-directory: ./src/AutomationConnectors.SonaType/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-    - name: Pack
+    - name: Octopus Connector - Pack
       working-directory: ./src/AutomationConnectors.Octopus/
       run: dotnet pack AutomationConnectors.Octopus.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
-    - name: Push
+    - name: Octopus Connector - Push
       working-directory: ./src/AutomationConnectors.Octopus/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-    - name: Pack
+    - name: Exchange Connector - Pack
       working-directory: ./src/AutomationConnectors.Exchange/
       run: dotnet pack AutomationConnectors.Exchange.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
-    - name: Push
+    - name: Exchange Connector - Push
       working-directory: ./src/AutomationConnectors.Exchange/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-    - name: Pack
+    - name: Fortify Connector - Pack
       working-directory: ./src/AutomationConnectors.Fortify/
       run: dotnet pack AutomationConnectors.Fortify.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
       
-    - name: Push
+    - name: Fortify Connector - Push
       working-directory: ./src/AutomationConnectors.Fortify/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
