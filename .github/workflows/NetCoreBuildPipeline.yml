@@ -22,12 +22,6 @@ jobs:
       with:
         versionSpec: '5.5.0'
 
-    - name: Determine Version
-      uses: gittools/actions/gitversion/execute@v0.9.7
-      with:
-        useConfigFile: true
-        configFilePath: ./GitVersion.yml
-
     - name: Display SemVer
       run: |
         echo "SemVer: $GITVERSION_SEMVER"
@@ -38,11 +32,14 @@ jobs:
       with:
         dotnet-version: 5.0.103
 
-    - name: Install dependencies
+    - name: Restore dependencies
       run: dotnet restore
 
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
+    - name: Common Connector - Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.7
+      with:
+        useConfigFile: true
+        configFilePath: ./GitVersion.yml
       
     - name: Common Connector - Pack
       working-directory: ./src/AutomationConnectors.Common/
