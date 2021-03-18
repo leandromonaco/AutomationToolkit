@@ -2,7 +2,7 @@ next-version: 5.0.1
 branches:
   main:
     regex: ^latest$
-    mode: ContinuousDelivery
+    mode: ContinuousDeployment
     tag:
     increment: Patch
     prevent-increment-of-merged-branch-version: true
