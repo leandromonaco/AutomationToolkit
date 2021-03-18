@@ -90,11 +90,6 @@ namespace AutomationConnectors.AzDevOps
             return build;
         }
 
-        public async Task GetUsersAsync()
-        {
-            var response = await _httpService.GetAsync($"{_baseUrl}/graph/users");
-        }
-
         public async Task<List<AzDevOpsPullRequest>> GetPullRequestsAsync(string repositoryId, bool isPullRequestCompleted)
         {
             string response;
