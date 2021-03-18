@@ -1,11 +1,11 @@
 ﻿using AutomationConnectors.Common;
 using AutomationConnectors.Common.Http;
+using IntegrationConnectors.Octopus.Model;
 using Newtonsoft.Json;
-using Octopus.Repository.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Octopus.Repository
+namespace IntegrationConnectors.Octopus
 {
     public class OctopusConnector : BaseConnector
     {

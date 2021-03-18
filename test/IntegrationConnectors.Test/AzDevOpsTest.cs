@@ -1,4 +1,5 @@
-﻿using AutomationConnectors.AzDevOps;
+﻿using AutomationConnectors.Common.Http;
+using IntegrationConnectors.AzDevOps;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AutomationConnectors.Test
+namespace IntegrationConnectors.Test
 {
 
     public class AzDevOpsTest
@@ -23,7 +24,7 @@ namespace AutomationConnectors.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _azDevOpsTestRepository = new AzDevOpsConnector(_configuration["AzDevOps:Url"], _configuration["AzDevOps:Key"], Common.Http.AuthenticationType.DefaultCredentials);
+            _azDevOpsTestRepository = new AzDevOpsConnector(_configuration["AzDevOps:Url"], _configuration["AzDevOps:Key"], AuthenticationType.DefaultCredentials);
         }
 
         [Fact]

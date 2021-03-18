@@ -1,12 +1,13 @@
-﻿using Microsoft.Extensions.Configuration;
-using Octopus.Repository;
-using Octopus.Repository.Model;
+﻿using AutomationConnectors.Common.Http;
+using IntegrationConnectors.Octopus;
+using IntegrationConnectors.Octopus.Model;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AutomationConnectors.Test
+namespace IntegrationConnectors.Test
 {
     public class OctopusTest
     {
@@ -22,7 +23,7 @@ namespace AutomationConnectors.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _octopusRepository = new OctopusConnector(_configuration["Octopus:Url"], _configuration["Octopus:Key"], _configuration["Octopus:SpaceId"], Common.Http.AuthenticationType.OctopusKey);
+            _octopusRepository = new OctopusConnector(_configuration["Octopus:Url"], _configuration["Octopus:Key"], _configuration["Octopus:SpaceId"], AuthenticationType.OctopusKey);
         }
 
         [Fact]

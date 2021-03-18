@@ -1,9 +1,10 @@
-﻿using AutomationConnectors.Proget;
+﻿using AutomationConnectors.Common.Http;
+using IntegrationConnectors.Proget;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AutomationConnectors.Test
+namespace IntegrationConnectors.Test
 {
     public class ProgetTest
     {
@@ -19,7 +20,7 @@ namespace AutomationConnectors.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _progetRepository = new ProgetConnector(_configuration["Proget:Url"], _configuration["Proget:Key"], Common.Http.AuthenticationType.ProgetKey);
+            _progetRepository = new ProgetConnector(_configuration["Proget:Url"], _configuration["Proget:Key"], AuthenticationType.ProgetKey);
         }
 
         [Fact]

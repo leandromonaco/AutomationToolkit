@@ -1,4 +1,4 @@
-﻿namespace Octopus.Repository.Model
+﻿namespace IntegrationConnectors.Octopus.Model
 {
     public enum OctopusVariableSetType
     {

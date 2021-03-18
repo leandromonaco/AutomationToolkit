@@ -34,14 +34,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AutomationConnectors.AzDevOps\AutomationConnectors.AzDevOps.csproj" />
-    <ProjectReference Include="..\..\src\AutomationConnectors.Confluence\AutomationConnectors.Confluence.csproj" />
-    <ProjectReference Include="..\..\src\AutomationConnectors.Exchange\AutomationConnectors.Exchange.csproj" />
-    <ProjectReference Include="..\..\src\AutomationConnectors.Fortify\AutomationConnectors.Fortify.csproj" />
-    <ProjectReference Include="..\..\src\AutomationConnectors.Octopus\AutomationConnectors.Octopus.csproj" />
-    <ProjectReference Include="..\..\src\AutomationConnectors.Proget\AutomationConnectors.Proget.csproj" />
-    <ProjectReference Include="..\..\src\AutomationConnectors.SonaType\AutomationConnectors.SonaType.csproj" />
-    <ProjectReference Include="..\..\src\AutomationConnectors.VersionOne\AutomationConnectors.VersionOne.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.AzDevOps\IntegrationConnectors.AzDevOps.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.Confluence\IntegrationConnectors.Confluence.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.EuropeanCentralBank\IntegrationConnectors.ForeignExchange.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.Exchange\IntegrationConnectors.Exchange.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.Fortify\IntegrationConnectors.Fortify.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.Octopus\IntegrationConnectors.Octopus.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.Pocket\IntegrationConnectors.Pocket.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.Proget\IntegrationConnectors.Proget.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.SonaType\IntegrationConnectors.SonaType.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.VersionOne\IntegrationConnectors.VersionOne.csproj" />
   </ItemGroup>
 
   <ItemGroup>

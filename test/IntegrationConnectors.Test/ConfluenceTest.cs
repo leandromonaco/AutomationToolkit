@@ -1,15 +1,10 @@
-﻿using AutomationConnectors.AzDevOps;
-using AutomationConnectors.Common.Http;
-using AutomationConnectors.Confluence;
-using AutomationConnectors.SonaType;
+﻿using AutomationConnectors.Common.Http;
+using IntegrationConnectors.Confluence;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AutomationConnectors.Test
+namespace IntegrationConnectors.Test
 {
     /// <summary>
     /// https://ossindex.sonatype.org/doc/rest

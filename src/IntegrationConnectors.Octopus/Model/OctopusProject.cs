@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Octopus.Repository.Model
+namespace IntegrationConnectors.Octopus.Model
 {
     public class OctopusProject
     {

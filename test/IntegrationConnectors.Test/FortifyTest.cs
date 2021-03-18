@@ -1,9 +1,10 @@
-﻿using AutomationConnectors.Fortify;
+﻿using AutomationConnectors.Common.Http;
+using IntegrationConnectors.Fortify;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AutomationConnectors.Test
+namespace IntegrationConnectors.Test
 {
     public class FortifyTest
     {
@@ -20,7 +21,7 @@ namespace AutomationConnectors.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _fortifyTestRepository = new FortifyConnector(_configuration["Fortify:Url"], _configuration["Fortify:Key"], Common.Http.AuthenticationType.Basic);
+            _fortifyTestRepository = new FortifyConnector(_configuration["Fortify:Url"], _configuration["Fortify:Key"], AuthenticationType.Basic);
         }
 
         [Fact]
@@ -28,7 +29,7 @@ namespace AutomationConnectors.Test
         {
             var unifiedLoginToken = await _fortifyTestRepository.GetUnifiedLoginTokenAsync();
 
-            _fortifyTestRepository2 = new FortifyConnector(_configuration["Fortify:Url"], unifiedLoginToken, Common.Http.AuthenticationType.FortifyToken);
+            _fortifyTestRepository2 = new FortifyConnector(_configuration["Fortify:Url"], unifiedLoginToken, AuthenticationType.FortifyToken);
 
             var projects = await _fortifyTestRepository2.GetProjectsAsync();
 

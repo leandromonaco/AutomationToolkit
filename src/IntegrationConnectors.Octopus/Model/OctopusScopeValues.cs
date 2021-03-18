@@ -1,7 +1,6 @@
-﻿using Octopus.Repository.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Octopus.Repository.Model
+namespace IntegrationConnectors.Octopus.Model
 {
     public class OctopusScopeValues
     {

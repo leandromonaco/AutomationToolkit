@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Octopus.Repository.Model
+namespace IntegrationConnectors.Octopus.Model
 {
     public class OctopusDeployment
     {

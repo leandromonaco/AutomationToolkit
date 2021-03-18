@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AutomationConnectors.Test
+namespace IntegrationConnectors.Test
 {
     public class VersionOneTest
     {

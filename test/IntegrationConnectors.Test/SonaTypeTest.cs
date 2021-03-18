@@ -1,9 +1,10 @@
-﻿using AutomationConnectors.SonaType;
+﻿using AutomationConnectors.Common.Http;
+using AutomationConnectors.SonaType;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AutomationConnectors.Test
+namespace IntegrationConnectors.Test
 {
     /// <summary>
     /// https://ossindex.sonatype.org/doc/rest
@@ -22,7 +23,7 @@ namespace AutomationConnectors.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _sonaTypeTestRepository = new SonaTypeConnector(_configuration["SonaType:Url"], _configuration["SonaType:Key"], Common.Http.AuthenticationType.Bearer);
+            _sonaTypeTestRepository = new SonaTypeConnector(_configuration["SonaType:Url"], _configuration["SonaType:Key"], AuthenticationType.Bearer);
         }
 
         [Fact]

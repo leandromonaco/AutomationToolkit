@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Octopus.Repository.Model
+namespace IntegrationConnectors.Octopus.Model
 {
     public class OctopusEnvironment
     {

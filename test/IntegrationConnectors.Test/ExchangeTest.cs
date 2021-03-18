@@ -1,11 +1,12 @@
-﻿using AutomationConnectors.Exchange;
+﻿using AutomationConnectors.Common.Http;
+using IntegrationConnectors.Exchange;
 using Microsoft.Exchange.WebServices.Data;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Text;
 using Xunit;
 
-namespace AutomationConnectors.Test
+namespace IntegrationConnectors.Test
 {
     public class ExchangeTest
     {
@@ -21,7 +22,7 @@ namespace AutomationConnectors.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _exchangeTestRepository = new ExchangeConnector(_configuration["Exchange:Url"], _configuration["Exchange:Key"], Common.Http.AuthenticationType.Exchange);
+            _exchangeTestRepository = new ExchangeConnector(_configuration["Exchange:Url"], _configuration["Exchange:Key"], AuthenticationType.Exchange);
             
         }
 
