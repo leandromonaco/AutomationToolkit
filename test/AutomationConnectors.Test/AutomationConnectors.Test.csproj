@@ -35,7 +35,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\AutomationConnectors.AzDevOps\AutomationConnectors.AzDevOps.csproj" />
-    <ProjectReference Include="..\..\src\AutomationConnectors.Common\AutomationConnectors.Common.csproj" />
     <ProjectReference Include="..\..\src\AutomationConnectors.Confluence\AutomationConnectors.Confluence.csproj" />
     <ProjectReference Include="..\..\src\AutomationConnectors.Exchange\AutomationConnectors.Exchange.csproj" />
     <ProjectReference Include="..\..\src\AutomationConnectors.Fortify\AutomationConnectors.Fortify.csproj" />

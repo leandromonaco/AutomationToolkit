@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4C149715-7592-46AA-830A-D7CA53AB1378}"
-	ProjectSection(SolutionItems) = preProject
-		GitVersion.yml = GitVersion.yml
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationConnectors.AzDevOps", "src\AutomationConnectors.AzDevOps\AutomationConnectors.AzDevOps.csproj", "{3FDAABD7-3BBB-44F2-97CD-E17D53430CD8}"
 EndProject

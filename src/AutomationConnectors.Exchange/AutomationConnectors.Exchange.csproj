@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutomationConnectors.Common" Version="5.0.1" />
     <PackageReference Include="Microsoft.Exchange.WebServices" Version="2.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AutomationConnectors.Common\AutomationConnectors.Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -45,7 +45,6 @@ namespace AutomationConnectors.Test
             //var tests = await _azDevOpsTestRepository.GetTestRunsAsync(true);
             var builds = await _azDevOpsTestRepository.GetBuildsAsync();
             var build = await _azDevOpsTestRepository.GetBuildAsync(builds[0].Id);
-            await _azDevOpsTestRepository.GetUsersAsync();
         }
 
         [Fact]
