@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using AutomationConnectors.VersionOne.Model;
-using AutomationConnectors.Common.Http;
-using AutomationConnectors.Common;
+using IntegrationConnectors.Common;
+using IntegrationConnectors.Common.Http;
 
 namespace AutomationConnectors.VersionOne
 {

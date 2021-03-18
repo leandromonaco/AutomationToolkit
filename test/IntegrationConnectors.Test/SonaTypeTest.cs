@@ -1,5 +1,5 @@
-﻿using AutomationConnectors.Common.Http;
-using AutomationConnectors.SonaType;
+﻿using AutomationConnectors.SonaType;
+using IntegrationConnectors.Common.Http;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using Xunit;

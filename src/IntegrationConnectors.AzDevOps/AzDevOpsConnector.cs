@@ -4,8 +4,6 @@ using IntegrationConnectors.AzDevOps.Model.Commit;
 using IntegrationConnectors.AzDevOps.Model.PullRequest;
 using IntegrationConnectors.AzDevOps.Model.Repository;
 using IntegrationConnectors.AzDevOps.Model.TestRun;
-using AutomationConnectors.Common;
-using AutomationConnectors.Common.Http;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,6 +11,8 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using IntegrationConnectors.Common;
+using IntegrationConnectors.Common.Http;
 
 namespace IntegrationConnectors.AzDevOps
 {

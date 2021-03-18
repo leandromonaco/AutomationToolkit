@@ -1,4 +1,4 @@
-﻿using AutomationConnectors.Common.Http;
+﻿using IntegrationConnectors.Common.Http;
 using IntegrationConnectors.Octopus;
 using IntegrationConnectors.Octopus.Model;
 using Microsoft.Extensions.Configuration;

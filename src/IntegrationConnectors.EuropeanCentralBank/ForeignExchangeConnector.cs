@@ -1,5 +1,4 @@
-﻿using AutomationConnectors.Common;
-using System;
+﻿using IntegrationConnectors.Common;
 
 namespace IntegrationConnectors.ForeignExchange
 {

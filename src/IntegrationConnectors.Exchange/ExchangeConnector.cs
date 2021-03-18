@@ -1,4 +1,4 @@
-﻿using AutomationConnectors.Common.Http;
+﻿using IntegrationConnectors.Common.Http;
 using Microsoft.Exchange.WebServices.Data;
 using System;
 using System.Collections.Generic;

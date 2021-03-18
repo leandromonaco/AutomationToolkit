@@ -1,6 +1,6 @@
-﻿using AutomationConnectors.Common;
-using AutomationConnectors.Common.Http;
-using AutomationConnectors.SonaType.Model;
+﻿using AutomationConnectors.SonaType.Model;
+using IntegrationConnectors.Common;
+using IntegrationConnectors.Common.Http;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Threading.Tasks;

@@ -1,4 +1,4 @@
-﻿using AutomationConnectors.Common.Http;
+﻿using IntegrationConnectors.Common.Http;
 using IntegrationConnectors.Exchange;
 using Microsoft.Exchange.WebServices.Data;
 using Microsoft.Extensions.Configuration;

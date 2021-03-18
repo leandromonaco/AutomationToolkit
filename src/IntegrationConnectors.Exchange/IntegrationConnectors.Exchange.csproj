@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutomationConnectors.Common" Version="5.0.1" />
+    <PackageReference Include="IntegrationConnectors.Common" Version="5.0.1" />
     <PackageReference Include="Microsoft.Exchange.WebServices" Version="2.2.0" />
   </ItemGroup>
 

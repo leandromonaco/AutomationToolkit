@@ -1,5 +1,5 @@
-﻿using AutomationConnectors.Common.Http;
-using IntegrationConnectors.AzDevOps;
+﻿using IntegrationConnectors.AzDevOps;
+using IntegrationConnectors.Common.Http;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;

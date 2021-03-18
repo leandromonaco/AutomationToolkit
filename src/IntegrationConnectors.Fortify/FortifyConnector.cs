@@ -1,5 +1,5 @@
-﻿using AutomationConnectors.Common;
-using AutomationConnectors.Common.Http;
+﻿using IntegrationConnectors.Common;
+using IntegrationConnectors.Common.Http;
 using IntegrationConnectors.Fortify.Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
