@@ -86,5 +86,12 @@ namespace AutomationConnectors.Test
                 var commits = await _azDevOpsTestRepository.GetCommitsAsync(repository.Id, "master", new DateTime(2020, 1, 1), new DateTime(2020, 12, 31), 1000);
             }
         }
+
+
+        [Fact]
+        async Task QueueBuild()
+        {
+            var build = await _azDevOpsTestRepository.QueueBuildAsync("Build Definition Name", "main", true);
+        }
     }
 }

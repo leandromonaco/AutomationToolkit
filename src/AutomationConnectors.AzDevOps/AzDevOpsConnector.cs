@@ -134,6 +134,44 @@ namespace AutomationConnectors.AzDevOps
             return pullRequestThreads.Value;
         }
 
+        /// <summary>
+        /// https://docs.microsoft.com/en-us/rest/api/azure/devops/build/builds/queue?view=azure-devops-rest-6.0
+        /// </summary>
+        /// <param name="buildDefinitionName">Build Definition Name</param>
+        /// <param name="branchName">Branch Name</param>
+        /// <param name="waitUntilCompletion">Wait until the build is completed</param>
+        /// <returns>Queued Build</returns>
+        public async Task<AzDevOpsBuild> QueueBuildAsync(string buildDefinitionName, string branchName, bool waitUntilCompletion)
+        {
+            string response;
+
+            List<AzDevOpsBuildDefinition> buildDefinitions = await GetBuildDefinitionsAsync(true, false);
+            var buildDefinition = buildDefinitions.FirstOrDefault(bds => bds.Name.Equals(buildDefinitionName));
+
+            var body = new
+            {
+                priority = "high",
+                definition = new { id = buildDefinition.Id },
+                sourceBranch = branchName,
+            };
+
+            response = await _httpService.PostAsync($"{_baseUrl}/build/builds?api-version=6.0", JsonConvert.SerializeObject(body));
+            var newQueuedBuild = JsonConvert.DeserializeObject<AzDevOpsBuild>(response);
+
+            if (waitUntilCompletion)
+            {
+                //Pooling to check build status
+                while (!newQueuedBuild.Status.Equals("completed"))
+                {
+                    //Update Build Status every 1 minute
+                    await Task.Delay(60000);
+                    newQueuedBuild = await GetBuildAsync(newQueuedBuild.Id);
+                }
+            }
+
+            return newQueuedBuild;
+        }
+
 
     }
 }
