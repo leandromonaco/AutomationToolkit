@@ -22,15 +22,17 @@ jobs:
       with:
         versionSpec: '5.5.0'
 
-    - name: Display SemVer
-      run: |
-        echo "SemVer: $GITVERSION_SEMVER"
-
     - uses: actions/checkout@v2
-    - name: Setup .NET Core
+    - name: Install .NET Core 3.1.13
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.103
+        dotnet-version: 3.1.13
+
+    - uses: actions/checkout@v2
+    - name: Install .NET 5
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.4
 
     - name: Restore dependencies
       run: dotnet restore
