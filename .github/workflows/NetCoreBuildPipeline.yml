@@ -41,14 +41,14 @@ jobs:
       uses: gittools/actions/gitversion/execute@v0.9.7
       with:
         useConfigFile: true
-        configFilePath: ./src/AutomationConnectors.Common/GitVersion.yml
+        configFilePath: ./src/IntegrationConnectors.Common/GitVersion.yml
       
     - name: Common Connector - Pack
-      working-directory: ./src/AutomationConnectors.Common/
-      run: dotnet pack AutomationConnectors.Common.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      working-directory: ./src/IntegrationConnectors.Common/
+      run: dotnet pack IntegrationConnectors.Common.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
 
     - name: Common Connector - Push
-      working-directory: ./src/AutomationConnectors.Common/
+      working-directory: ./src/IntegrationConnectors.Common/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: AzDevOps Connector - Determine Version
