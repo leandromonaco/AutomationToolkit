@@ -48,8 +48,8 @@ namespace IntegrationConnectors.Common.Http
                 case AuthenticationType.FortifyToken:
                     _client.DefaultRequestHeaders.Add("Authorization", $"FortifyToken {apiKey}");
                     break;
-                case AuthenticationType.Exchange:
-                    //TODO
+                default:
+                    throw new Exception("AuthenticationType is not implemented");
                     break;
             }
         }

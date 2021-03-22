@@ -12,7 +12,11 @@ namespace IntegrationConnectors.Common
         {
             _baseUrl = baseUrl;
             _httpService = new HttpHostBuilder().HttpService;
-            _httpService.Authenticate(apiKey, authType);
+            if (!authType.Equals(AuthenticationType.None))
+            {
+                _httpService.Authenticate(apiKey, authType);
+            }
+            
         }
 
         public BaseConnector()
