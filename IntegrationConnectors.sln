@@ -36,7 +36,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationConnectors.Excha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationConnectors.Octopus", "src\IntegrationConnectors.Octopus\IntegrationConnectors.Octopus.csproj", "{00399C73-364A-4CD5-B220-EF22E7865B7A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationConnectors.ForeignExchange", "src\IntegrationConnectors.EuropeanCentralBank\IntegrationConnectors.ForeignExchange.csproj", "{667D9ACC-FF53-402C-A236-AABADAF678E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationConnectors.EuropeanCentralBank", "src\IntegrationConnectors.EuropeanCentralBank\IntegrationConnectors.EuropeanCentralBank.csproj", "{667D9ACC-FF53-402C-A236-AABADAF678E2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationConnectors.Test", "test\IntegrationConnectors.Test\IntegrationConnectors.Test.csproj", "{F8C32CB7-4581-4D8B-91F3-528DEE113C62}"
 EndProject

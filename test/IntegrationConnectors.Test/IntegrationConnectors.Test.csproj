@@ -36,7 +36,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\IntegrationConnectors.AzDevOps\IntegrationConnectors.AzDevOps.csproj" />
     <ProjectReference Include="..\..\src\IntegrationConnectors.Confluence\IntegrationConnectors.Confluence.csproj" />
-    <ProjectReference Include="..\..\src\IntegrationConnectors.EuropeanCentralBank\IntegrationConnectors.ForeignExchange.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.EuropeanCentralBank\IntegrationConnectors.EuropeanCentralBank.csproj" />
     <ProjectReference Include="..\..\src\IntegrationConnectors.Exchange\IntegrationConnectors.Exchange.csproj" />
     <ProjectReference Include="..\..\src\IntegrationConnectors.Fortify\IntegrationConnectors.Fortify.csproj" />
     <ProjectReference Include="..\..\src\IntegrationConnectors.Octopus\IntegrationConnectors.Octopus.csproj" />
