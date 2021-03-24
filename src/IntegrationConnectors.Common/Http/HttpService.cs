@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -8,11 +9,11 @@ namespace IntegrationConnectors.Common.Http
 {
     public class HttpService : IHttpService
     {
-        HttpClient _client;
+        HttpClient _httpClient;
 
         public HttpService(IHttpClientFactory httpClient)
         {
-            _client = new HttpClient(new HttpClientHandler());
+            _httpClient = new HttpClient(new HttpClientHandler());
         }
 
         private TimeSpan _timeout;
@@ -22,7 +23,7 @@ namespace IntegrationConnectors.Common.Http
           set 
             {
                 _timeout = value;
-                _client.Timeout = _timeout;
+                _httpClient.Timeout = _timeout;
             } 
         }
 
@@ -31,22 +32,22 @@ namespace IntegrationConnectors.Common.Http
             switch (authType)
             {
                 case AuthenticationType.Basic:
-                    _client.DefaultRequestHeaders.Add("Authorization", $"Basic {apiKey}");
+                    _httpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {apiKey}");
                     break;
                 case AuthenticationType.Bearer:
-                    _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
                     break;
                 case AuthenticationType.DefaultCredentials:
-                    _client = new HttpClient(new HttpClientHandler() { UseDefaultCredentials = true });
+                    _httpClient = new HttpClient(new HttpClientHandler() { UseDefaultCredentials = true });
                     break;
                 case AuthenticationType.OctopusKey:
-                    _client.DefaultRequestHeaders.Add("X-Octopus-ApiKey", apiKey);
+                    _httpClient.DefaultRequestHeaders.Add("X-Octopus-ApiKey", apiKey);
                     break;
                 case AuthenticationType.ProgetKey:
-                    _client.DefaultRequestHeaders.Add("X-ApiKey", apiKey);
+                    _httpClient.DefaultRequestHeaders.Add("X-ApiKey", apiKey);
                     break;
                 case AuthenticationType.FortifyToken:
-                    _client.DefaultRequestHeaders.Add("Authorization", $"FortifyToken {apiKey}");
+                    _httpClient.DefaultRequestHeaders.Add("Authorization", $"FortifyToken {apiKey}");
                     break;
                 default:
                     throw new Exception("AuthenticationType is not implemented");
@@ -56,21 +57,28 @@ namespace IntegrationConnectors.Common.Http
 
         public async Task<string> GetAsync(string requestUri)
         {
-            var result = await _client.GetAsync(requestUri);
+            var result = await _httpClient.GetAsync(requestUri);
             return await result.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> PostAsync(string requestUri, string jsonContent)
+        public async Task<string> PostWithJsonAsync(string requestUri, string jsonContent)
         {
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-            var result = await _client.PostAsync(requestUri, content);
+            var result = await _httpClient.PostAsync(requestUri, content);
+            return await result.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> PostWithParametersAsync(string requestUri, Dictionary<string, string> parameters)
+        {
+            var encodedContent = new FormUrlEncodedContent(parameters);
+            var result = await _httpClient.PostAsync(requestUri, encodedContent);
             return await result.Content.ReadAsStringAsync();
         }
 
         public async Task<string> PutAsync(string requestUri, string jsonContent)
         {
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-            var result = await _client.PutAsync(requestUri, content);
+            var result = await _httpClient.PutAsync(requestUri, content);
             return await result.Content.ReadAsStringAsync();
         }
     }
