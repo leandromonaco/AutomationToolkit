@@ -162,3 +162,31 @@ jobs:
     - name: Fortify Connector - Push
       working-directory: ./src/IntegrationConnectors.Fortify/
       run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+    - name: Twilio Connector - Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.7
+      with:
+        useConfigFile: true
+        configFilePath: ./src/IntegrationConnectors.Twilio/GitVersion.yml
+
+    - name: Twilio Connector - Pack
+      working-directory: ./src/IntegrationConnectors.Twilio/
+      run: dotnet pack IntegrationConnectors.Twilio.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      
+    - name: Twilio Connector - Push
+      working-directory: ./src/IntegrationConnectors.Twilio/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+    - name: EuropeanCentralBank Connector - Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.7
+      with:
+        useConfigFile: true
+        configFilePath: ./src/IntegrationConnectors.EuropeanCentralBank/GitVersion.yml
+
+    - name: EuropeanCentralBank Connector - Pack
+      working-directory: ./src/IntegrationConnectors.EuropeanCentralBank/
+      run: dotnet pack IntegrationConnectors.EuropeanCentralBank.csproj --output nuget-packages --configuration Release /p:Version="$GITVERSION_SEMVER";AssemblyVersion="$GITVERSION_SEMVER"
+      
+    - name: EuropeanCentralBank Connector - Push
+      working-directory: ./src/IntegrationConnectors.EuropeanCentralBank/
+      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
