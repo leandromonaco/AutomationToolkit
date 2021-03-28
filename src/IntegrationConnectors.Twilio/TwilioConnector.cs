@@ -19,15 +19,29 @@ namespace IntegrationConnectors.Twilio
             _accountSid = decodedString.Split(":")[0];
         }
 
-        public async Task<string> SendMessage(TwilioSMS sms) 
+        public async Task<string> SendSMS(TwilioMessage twilioMessage) 
         {
             var parameters = new Dictionary<string, string>
             {
-                { "From", sms.From },
-                { "To", sms.To },
-                { "Body", sms.Body }
+                { "From", twilioMessage.From },
+                { "To", twilioMessage.To },
+                { "Body", twilioMessage.Body }
             };
             
+            var response = await PostWithParametersAsync($"{_baseUrl}/2010-04-01/Accounts/{_accountSid}/Messages.json", parameters);
+
+            return response;
+        }
+
+        public async Task<string> SendWhatsapp(TwilioMessage twilioMessage)
+        {
+            var parameters = new Dictionary<string, string>
+            {
+                { "From", $"whatsapp:{twilioMessage.From}" },
+                { "To", $"whatsapp:{twilioMessage.To}" },
+                { "Body", twilioMessage.Body }
+            };
+
             var response = await PostWithParametersAsync($"{_baseUrl}/2010-04-01/Accounts/{_accountSid}/Messages.json", parameters);
 
             return response;

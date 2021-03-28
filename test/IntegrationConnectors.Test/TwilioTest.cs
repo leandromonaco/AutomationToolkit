@@ -32,13 +32,23 @@ namespace IntegrationConnectors.Test
         [Fact]
         async Task SendMessage()
         {
-            var sms = new TwilioSMS() 
+            var twilioMessage = new TwilioMessage() 
             { 
                                         From = "+16788330195",
                                         To = "+64279632222",
-                                        Body = "Hello"
+                                        Body = "Hello SMS"
             };
-            var result = await _twilioConnector.SendMessage(sms);
+
+            var smsResult = await _twilioConnector.SendSMS(twilioMessage);
+
+            twilioMessage = new TwilioMessage()
+            {
+                From = "+14155238886",
+                To = "+64279632222",
+                Body = "Hello Whatsapp"
+            };
+
+            var waResult = await _twilioConnector.SendWhatsapp(twilioMessage);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace IntegrationConnectors.Twilio.Model
 {
-    public class TwilioSMS
+    public class TwilioMessage
     {
         public string From { get; set; }
         public string To { get; set; }
