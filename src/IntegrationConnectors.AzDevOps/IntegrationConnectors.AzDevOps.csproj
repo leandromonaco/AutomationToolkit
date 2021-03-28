@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="IntegrationConnectors.Common" Version="5.0.1" />
+    <PackageReference Include="IntegrationConnectors.Common" Version="5.0.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 

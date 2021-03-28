@@ -43,6 +43,7 @@
     <ProjectReference Include="..\..\src\IntegrationConnectors.Pocket\IntegrationConnectors.Pocket.csproj" />
     <ProjectReference Include="..\..\src\IntegrationConnectors.Proget\IntegrationConnectors.Proget.csproj" />
     <ProjectReference Include="..\..\src\IntegrationConnectors.SonaType\IntegrationConnectors.SonaType.csproj" />
+    <ProjectReference Include="..\..\src\IntegrationConnectors.Twilio\IntegrationConnectors.Twilio.csproj" />
     <ProjectReference Include="..\..\src\IntegrationConnectors.VersionOne\IntegrationConnectors.VersionOne.csproj" />
   </ItemGroup>
 

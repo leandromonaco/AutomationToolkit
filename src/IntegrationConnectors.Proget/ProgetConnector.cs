@@ -25,7 +25,7 @@ namespace IntegrationConnectors.Proget
             foreach (var packagePromotion in packagePromotions)
             {
                 var packagePromotionJson = JsonConvert.SerializeObject(packagePromotion);
-                await _httpService.PostAsync($"{_baseUrl}/promotions/promote", packagePromotionJson);
+                await PostWithJsonAsync($"{_baseUrl}/promotions/promote", packagePromotionJson);
             }
         }
     }

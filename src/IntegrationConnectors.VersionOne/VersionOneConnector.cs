@@ -38,7 +38,7 @@ namespace AutomationConnectors.VersionOne
                                     ""CreatedBy.Email"": ""{email}""
                                     }}
                             }}";
-            var defectsJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var defectsJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -72,7 +72,7 @@ namespace AutomationConnectors.VersionOne
                                     ""Team.Name"": ""{teamName}""
                                     }}
                             }}";
-            var defectsJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var defectsJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -113,7 +113,7 @@ namespace AutomationConnectors.VersionOne
                                     }},
                                 ""asof"": ""{asOf}""
                             }}";
-            var storiesJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var storiesJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (storiesJson.Length > 10)
             {
                 storiesJson = storiesJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -150,7 +150,7 @@ namespace AutomationConnectors.VersionOne
                                     }},
                                 ""asof"": ""{asOf}""
                             }}";
-            var defectsJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var defectsJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -192,7 +192,7 @@ namespace AutomationConnectors.VersionOne
                                     }},
                                 ""asof"": ""{asOf}""
                             }}";
-            var storiesJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var storiesJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (storiesJson.Length > 10)
             {
                 storiesJson = storiesJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -228,7 +228,7 @@ namespace AutomationConnectors.VersionOne
                                     }},
                                 ""asof"": ""{asOf}""
                             }}";
-            var defectsJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var defectsJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -270,7 +270,7 @@ namespace AutomationConnectors.VersionOne
                                     }},
                                 ""asof"": ""{asOf}""
                             }}";
-            var storiesJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var storiesJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (storiesJson.Length > 10)
             {
                 storiesJson = storiesJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -305,7 +305,7 @@ namespace AutomationConnectors.VersionOne
                                     }},
                                 ""asof"": ""{asOf}""
                             }}";
-            var defectsJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var defectsJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -347,7 +347,7 @@ namespace AutomationConnectors.VersionOne
                                     }},
                                 ""asof"": ""{asOf}""
                             }}";
-            var storiesJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var storiesJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (storiesJson.Length > 10)
             {
                 storiesJson = storiesJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -382,7 +382,7 @@ namespace AutomationConnectors.VersionOne
                                     }},
                                 ""asof"": ""{asOf}""
                             }}";
-            var defectsJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var defectsJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -416,7 +416,7 @@ filter:
   - Timebox.Name='{sprintId}'
   - Team.Name='{teamName}'";
 
-            var tasksJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var tasksJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (tasksJson.Length > 10)
             {
                 tasksJson = tasksJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -446,7 +446,7 @@ select:
 filter:
   - Owners.Name='{ownerName}'";
 
-            var tasksJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var tasksJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (tasksJson.Length > 10)
             {
                 tasksJson = tasksJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -467,7 +467,7 @@ select:
 filter:
 - Schedule.Name='{scheduleName}'";
 
-            var sprintsJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var sprintsJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (sprintsJson.Length > 10)
             {
                 sprintsJson = sprintsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
@@ -501,7 +501,7 @@ filter:
                                     }}
                                 }}";
 
-            var issuesJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var issuesJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (issuesJson.Length > 10)
             {
                 issuesJson = issuesJson.Replace("[\r\n    ", "").Replace("\r\n  ]", "");
@@ -532,7 +532,7 @@ filter:
   - Member.Email='{memberEmail}'
   - Date>='2020-01-01T00:00:00.0000000'";
 
-            var loggedTimeJson = await _httpService.PostAsync(_baseUrl, jsonString);
+            var loggedTimeJson = await PostWithJsonAsync(_baseUrl, jsonString);
             if (loggedTimeJson.Length > 10)
             {
                 loggedTimeJson = loggedTimeJson.Replace("[\r\n    ", "").Replace("\r\n  ]", "");

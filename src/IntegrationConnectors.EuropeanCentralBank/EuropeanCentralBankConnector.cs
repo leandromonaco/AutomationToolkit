@@ -8,7 +8,7 @@ namespace IntegrationConnectors.ForeignExchange
 {
     public class EuropeanCentralBankConnector : BaseConnector
     {
-        string _url;
+        readonly string _url;
         public EuropeanCentralBankConnector(string url) : base(string.Empty, string.Empty, AuthenticationType.None)
         {
             _url = url;

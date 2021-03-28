@@ -150,7 +150,7 @@ namespace IntegrationConnectors.AzDevOps
                 sourceBranch = branchName,
             };
 
-            response = await _httpService.PostAsync($"{_baseUrl}/build/builds?api-version=6.0", JsonConvert.SerializeObject(body));
+            response = await PostWithJsonAsync($"{_baseUrl}/build/builds?api-version=6.0", JsonConvert.SerializeObject(body));
             var newQueuedBuild = JsonConvert.DeserializeObject<AzDevOpsBuild>(response);
 
             if (waitUntilCompletion)
