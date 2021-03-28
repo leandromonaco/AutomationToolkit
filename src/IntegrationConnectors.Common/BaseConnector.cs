@@ -84,7 +84,6 @@ namespace IntegrationConnectors.Common
         public async Task<string> PostWithParametersAsync(string requestUri, Dictionary<string, string> parameters)
         {
             var encodedContent = new FormUrlEncodedContent(parameters);
-            _httpClient.DefaultRequestHeaders.Add("Content-Type", "application/x-www-form-urlencoded");
             var result = await _httpClient.PostAsync(requestUri, encodedContent);
             return await result.Content.ReadAsStringAsync();
         }
