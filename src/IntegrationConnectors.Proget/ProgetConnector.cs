@@ -15,7 +15,7 @@ namespace IntegrationConnectors.Proget
 
         public async Task<List<ProgetPackage>> GetPromotionsAsync(string sourceFeed, string targetFeed)
         {
-            var response = await _httpService.GetAsync($"{_baseUrl}/promotions/list?fromFeed={sourceFeed}&toFeed={targetFeed}");
+            var response = await GetAsync($"{_baseUrl}/promotions/list?fromFeed={sourceFeed}&toFeed={targetFeed}");
             var progetPackages = JsonConvert.DeserializeObject<List<ProgetPackage>>(response);
             return progetPackages;
         }

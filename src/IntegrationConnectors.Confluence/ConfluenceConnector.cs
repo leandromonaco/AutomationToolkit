@@ -21,7 +21,7 @@ namespace IntegrationConnectors.Confluence
         public async Task UpdatePage(string pageId, string htmlContent, string comment)
         {
             //Get ConfluenceConnector Page Info
-            var response = await _httpService.GetAsync($"{_baseUrl}/content/{pageId}");
+            var response = await GetAsync($"{_baseUrl}/content/{pageId}");
             var wikiPage = JsonConvert.DeserializeObject<ConfluencePage>(response);
 
             //Update ConfluenceConnector Page
@@ -46,14 +46,14 @@ namespace IntegrationConnectors.Confluence
 
             var requestJson = JsonConvert.SerializeObject(requestBody);
 
-            var result = await _httpService.PutAsync($"{_baseUrl}/content/{pageId}", requestJson);
+            var result = await PutAsync($"{_baseUrl}/content/{pageId}", requestJson);
         }
 
         public async Task<List<ConfluencePageSearchResult>> SearchContentByLabelAsync(string label)
         {
             //&expand=history
             //expand=metadata.labels
-            var response = await _httpService.GetAsync($"{_baseUrl}/content/search?limit=10000&cql=type=page%20AND%20label='{label}'&expand=metadata.labels");
+            var response = await GetAsync($"{_baseUrl}/content/search?limit=10000&cql=type=page%20AND%20label='{label}'&expand=metadata.labels");
             var wikiPageSearchResults = JsonConvert.DeserializeObject<ConfluencePageSearchResults>(response);
             return wikiPageSearchResults.Results.Where(r => r.Type.Equals("page")).ToList();
         }
@@ -61,12 +61,12 @@ namespace IntegrationConnectors.Confluence
         public async Task<List<ConfluencePageSearchResult>> SearchContentByContributor(string username)
         {
             var results = new List<ConfluencePageSearchResult>();
-            var response = await _httpService.GetAsync($"{_baseUrl}/content/search?limit=10000&cql=type=page%20and%20(contributor='{username}')&expand=history,history.lastUpdated");
+            var response = await GetAsync($"{_baseUrl}/content/search?limit=10000&cql=type=page%20and%20(contributor='{username}')&expand=history,history.lastUpdated");
             var wikiPageSearchResults = JsonConvert.DeserializeObject<ConfluencePageSearchResults>(response);
             results.AddRange(wikiPageSearchResults.Results);
             while (wikiPageSearchResults.Links.Next != null)
             {
-                response = await _httpService.GetAsync($"{_baseUrl.Replace("/rest/api", "")}{wikiPageSearchResults.Links.Next}");
+                response = await GetAsync($"{_baseUrl.Replace("/rest/api", "")}{wikiPageSearchResults.Links.Next}");
                 wikiPageSearchResults = JsonConvert.DeserializeObject<ConfluencePageSearchResults>(response);
                 results.AddRange(wikiPageSearchResults.Results);
             }
@@ -77,12 +77,12 @@ namespace IntegrationConnectors.Confluence
         public async Task<List<ConfluencePageSearchResult>> SearchContentByCreator(string username)
         {
             var results = new List<ConfluencePageSearchResult>();
-            var response = await _httpService.GetAsync($"{_baseUrl}/content/search?limit=10000&cql=type=page%20and%20(creator='{username}')&expand=history,history.lastUpdated");
+            var response = await GetAsync($"{_baseUrl}/content/search?limit=10000&cql=type=page%20and%20(creator='{username}')&expand=history,history.lastUpdated");
             var wikiPageSearchResults = JsonConvert.DeserializeObject<ConfluencePageSearchResults>(response);
             results.AddRange(wikiPageSearchResults.Results);
             while (wikiPageSearchResults.Links.Next != null)
             {
-                response = await _httpService.GetAsync($"{_baseUrl.Replace("/rest/api", "")}{wikiPageSearchResults.Links.Next}");
+                response = await GetAsync($"{_baseUrl.Replace("/rest/api", "")}{wikiPageSearchResults.Links.Next}");
                 wikiPageSearchResults = JsonConvert.DeserializeObject<ConfluencePageSearchResults>(response);
                 results.AddRange(wikiPageSearchResults.Results);
             }
@@ -93,12 +93,12 @@ namespace IntegrationConnectors.Confluence
         public async Task<List<ConfluencePageSearchResult>> SearchContentBySpace(string spaceKey)
         {
             var results = new List<ConfluencePageSearchResult>();
-            var response = await _httpService.GetAsync($"{_baseUrl}/content/search?limit=10000&cql=type=page%20and%20space.key='{spaceKey}'&expand=history,history.lastUpdated");
+            var response = await GetAsync($"{_baseUrl}/content/search?limit=10000&cql=type=page%20and%20space.key='{spaceKey}'&expand=history,history.lastUpdated");
             var wikiPageSearchResults = JsonConvert.DeserializeObject<ConfluencePageSearchResults>(response);
             results.AddRange(wikiPageSearchResults.Results);
             while (wikiPageSearchResults.Links.Next != null)
             {
-                response = await _httpService.GetAsync($"{_baseUrl.Replace("/rest/api", "")}{wikiPageSearchResults.Links.Next}");
+                response = await GetAsync($"{_baseUrl.Replace("/rest/api", "")}{wikiPageSearchResults.Links.Next}");
                 wikiPageSearchResults = JsonConvert.DeserializeObject<ConfluencePageSearchResults>(response);
                 results.AddRange(wikiPageSearchResults.Results);
             }
@@ -114,7 +114,7 @@ namespace IntegrationConnectors.Confluence
             var extendedLimit = confluenceLimit * 20;
             while (counter != extendedLimit)//Workaround to increase limit
             {
-                var response = await _httpService.GetAsync($"{_baseUrl}/search?limit={confluenceLimit}&start={counter}&cql=ancestor={parentId}+and+type=page");
+                var response = await GetAsync($"{_baseUrl}/search?limit={confluenceLimit}&start={counter}&cql=ancestor={parentId}+and+type=page");
                 var wikiPageSearchResults = JsonConvert.DeserializeObject<ConfluencePageSearchResults>(response);
 
                 foreach (var result in wikiPageSearchResults.Results)

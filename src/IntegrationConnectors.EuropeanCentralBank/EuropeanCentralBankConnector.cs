@@ -16,7 +16,7 @@ namespace IntegrationConnectors.ForeignExchange
 
         public async Task<double> ConvertCurrencyAsync(double amount, string conversionFrom, string conversionTo)
         {
-            var xml = await _httpService.GetAsync(_url);
+            var xml = await GetAsync(_url);
             XDocument doc = XDocument.Parse(xml);
             var fromRate = doc.Descendants().FirstOrDefault(n => n.Attribute("currency") != null && n.Attribute("currency").Value.Equals(conversionFrom)).Attribute("rate").Value;
             var toRate = doc.Descendants().FirstOrDefault(n => n.Attribute("currency") != null && n.Attribute("currency").Value.Equals(conversionTo)).Attribute("rate").Value;
