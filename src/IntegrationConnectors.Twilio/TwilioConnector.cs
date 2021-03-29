@@ -19,7 +19,7 @@ namespace IntegrationConnectors.Twilio
             _accountSid = decodedString.Split(":")[0];
         }
 
-        public async Task<string> SendSMS(TwilioMessage twilioMessage) 
+        public async Task<string> SendSMSAsync(TwilioMessage twilioMessage) 
         {
             var parameters = new Dictionary<string, string>
             {
@@ -33,7 +33,7 @@ namespace IntegrationConnectors.Twilio
             return response;
         }
 
-        public async Task<string> SendWhatsapp(TwilioMessage twilioMessage)
+        public async Task<string> SendWhatsappAsync(TwilioMessage twilioMessage)
         {
             var parameters = new Dictionary<string, string>
             {

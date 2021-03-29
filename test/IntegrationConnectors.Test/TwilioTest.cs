@@ -39,7 +39,7 @@ namespace IntegrationConnectors.Test
                                         Body = "Hello SMS"
             };
 
-            var smsResult = await _twilioConnector.SendSMS(twilioMessage);
+            var smsResult = await _twilioConnector.SendSMSAsync(twilioMessage);
 
             twilioMessage = new TwilioMessage()
             {
@@ -48,7 +48,7 @@ namespace IntegrationConnectors.Test
                 Body = "Hello Whatsapp"
             };
 
-            var waResult = await _twilioConnector.SendWhatsapp(twilioMessage);
+            var waResult = await _twilioConnector.SendWhatsappAsync(twilioMessage);
         }
     }
 }
