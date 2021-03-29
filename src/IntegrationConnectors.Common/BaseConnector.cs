@@ -1,5 +1,4 @@
-﻿using IntegrationConnectors.Common.Http;
-using IntegrationConnectors.Common.JsonConverters;
+﻿using IntegrationConnectors.Common.JsonConverters;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;

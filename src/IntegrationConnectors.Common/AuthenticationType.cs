@@ -1,4 +1,4 @@
-﻿namespace IntegrationConnectors.Common.Http
+﻿namespace IntegrationConnectors.Common
 {
     public enum AuthenticationType
     {
