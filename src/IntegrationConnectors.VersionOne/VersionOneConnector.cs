@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using AutomationConnectors.VersionOne.Model;
 using IntegrationConnectors.Common;
 using IntegrationConnectors.Common.Http;
@@ -42,7 +42,7 @@ namespace AutomationConnectors.VersionOne
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                defects = JsonConvert.DeserializeObject<List<VersionOneWorkItem>>(defectsJson);
+                defects = JsonSerializer.Deserialize<List<VersionOneWorkItem>>(defectsJson, _jsonSerializerOptions);
             }
 
             return defects;
@@ -76,7 +76,7 @@ namespace AutomationConnectors.VersionOne
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                defects = JsonConvert.DeserializeObject<List<VersionOneWorkItem>>(defectsJson);
+                defects = JsonSerializer.Deserialize<List<VersionOneWorkItem>>(defectsJson, _jsonSerializerOptions);
             }
 
             return defects;
@@ -117,7 +117,7 @@ namespace AutomationConnectors.VersionOne
             if (storiesJson.Length > 10)
             {
                 storiesJson = storiesJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                stories = JsonConvert.DeserializeObject<List<VersionOneWorkItem>>(storiesJson);
+                stories = JsonSerializer.Deserialize<List<VersionOneWorkItem>>(storiesJson, _jsonSerializerOptions);
             }
 
             //Search Defects
@@ -154,7 +154,7 @@ namespace AutomationConnectors.VersionOne
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                defects = JsonConvert.DeserializeObject<List<VersionOneWorkItem>>(defectsJson);
+                defects = JsonSerializer.Deserialize<List<VersionOneWorkItem>>(defectsJson, _jsonSerializerOptions);
             }
 
             List<VersionOneWorkItem> workItems = new List<VersionOneWorkItem>();
@@ -196,7 +196,7 @@ namespace AutomationConnectors.VersionOne
             if (storiesJson.Length > 10)
             {
                 storiesJson = storiesJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                stories = JsonConvert.DeserializeObject<List<VersionOneWorkItem>>(storiesJson);
+                stories = JsonSerializer.Deserialize<List<VersionOneWorkItem>>(storiesJson, _jsonSerializerOptions);
             }
 
             //Search Defects
@@ -232,7 +232,7 @@ namespace AutomationConnectors.VersionOne
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                defects = JsonConvert.DeserializeObject<List<VersionOneWorkItem>>(defectsJson);
+                defects = JsonSerializer.Deserialize<List<VersionOneWorkItem>>(defectsJson, _jsonSerializerOptions);
             }
 
             List<VersionOneWorkItem> workItems = new List<VersionOneWorkItem>();
@@ -274,7 +274,7 @@ namespace AutomationConnectors.VersionOne
             if (storiesJson.Length > 10)
             {
                 storiesJson = storiesJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                stories = JsonConvert.DeserializeObject<List<VersionOneWorkItem>>(storiesJson);
+                stories = JsonSerializer.Deserialize<List<VersionOneWorkItem>>(storiesJson, _jsonSerializerOptions);
             }
 
             //Search Defects
@@ -309,7 +309,7 @@ namespace AutomationConnectors.VersionOne
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                defects = JsonConvert.DeserializeObject<List<VersionOneWorkItem>>(defectsJson);
+                defects = JsonSerializer.Deserialize<List<VersionOneWorkItem>>(defectsJson, _jsonSerializerOptions);
             }
 
             var productWorkItems = new List<VersionOneWorkItem>();
@@ -351,7 +351,7 @@ namespace AutomationConnectors.VersionOne
             if (storiesJson.Length > 10)
             {
                 storiesJson = storiesJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                stories = JsonConvert.DeserializeObject<List<VersionOneWorkItem>>(storiesJson);
+                stories = JsonSerializer.Deserialize<List<VersionOneWorkItem>>(storiesJson, _jsonSerializerOptions);
             }
 
             //Search Defects
@@ -386,7 +386,7 @@ namespace AutomationConnectors.VersionOne
             if (defectsJson.Length > 10)
             {
                 defectsJson = defectsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                defects = JsonConvert.DeserializeObject<List<VersionOneWorkItem>>(defectsJson);
+                defects = JsonSerializer.Deserialize<List<VersionOneWorkItem>>(defectsJson, _jsonSerializerOptions);
             }
 
             List<VersionOneWorkItem> workItems = new List<VersionOneWorkItem>();
@@ -420,7 +420,7 @@ filter:
             if (tasksJson.Length > 10)
             {
                 tasksJson = tasksJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                tasks = JsonConvert.DeserializeObject<List<VersionOneTask>>(tasksJson);
+                tasks = JsonSerializer.Deserialize<List<VersionOneTask>>(tasksJson, _jsonSerializerOptions);
             }
 
             return tasks;
@@ -450,7 +450,7 @@ filter:
             if (tasksJson.Length > 10)
             {
                 tasksJson = tasksJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                tasks = JsonConvert.DeserializeObject<List<VersionOneTask>>(tasksJson);
+                tasks = JsonSerializer.Deserialize<List<VersionOneTask>>(tasksJson, _jsonSerializerOptions);
               
             }
 
@@ -471,7 +471,7 @@ filter:
             if (sprintsJson.Length > 10)
             {
                 sprintsJson = sprintsJson.Replace("[\r\n  [\r\n", "[\r\n").Replace("\r\n  ]\r\n]", "\r\n]");
-                sprints = JsonConvert.DeserializeObject<List<VersionOneSprint>>(sprintsJson);
+                sprints = JsonSerializer.Deserialize<List<VersionOneSprint>>(sprintsJson, _jsonSerializerOptions);
             }
             return sprints;
         }
@@ -505,7 +505,7 @@ filter:
             if (issuesJson.Length > 10)
             {
                 issuesJson = issuesJson.Replace("[\r\n    ", "").Replace("\r\n  ]", "");
-                issues = JsonConvert.DeserializeObject<List<VersionOneIssue>>(issuesJson);
+                issues = JsonSerializer.Deserialize<List<VersionOneIssue>>(issuesJson, _jsonSerializerOptions);
             }
 
             return issues;
@@ -536,7 +536,7 @@ filter:
             if (loggedTimeJson.Length > 10)
             {
                 loggedTimeJson = loggedTimeJson.Replace("[\r\n    ", "").Replace("\r\n  ]", "");
-                loggedTime = JsonConvert.DeserializeObject<List<VersionOneLoggedTime>>(loggedTimeJson);
+                loggedTime = JsonSerializer.Deserialize<List<VersionOneLoggedTime>>(loggedTimeJson, _jsonSerializerOptions);
             }
 
             return loggedTime;

@@ -1,27 +1,27 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace AutomationConnectors.VersionOne.Model
 {
     public class VersionOneTask
     {
         public string Number { get; set; }
-        [JsonProperty("Owners.Email")]
+        [JsonPropertyName("Owners.Email")]
         public List<string> OwnersEmail { get; set; }
-        [JsonProperty("Status.Name")]
+        [JsonPropertyName("Status.Name")]
         public string Status { get; set; }
         public string Name { get; set; }
-        [JsonProperty("Parent.Number")]
+        [JsonPropertyName("Parent.Number")]
         public string ParentNumber { get; set; }
-        [JsonProperty("Parent.Name")]
+        [JsonPropertyName("Parent.Name")]
         public string ParentName { get; set; }
-        [JsonProperty("Parent.Order")]
+        [JsonPropertyName("Parent.Order")]
         public long ParentOrder { get; set; }
-        [JsonProperty("AssetState")]
+        [JsonPropertyName("AssetState")]
         public VersionOneAssetState State { get; set; }
         public DateTime ChangeDate { get; set; }
-        [JsonProperty("_oid")]
+        [JsonPropertyName("_oid")]
         public string Url { get; set; }
     }
 }

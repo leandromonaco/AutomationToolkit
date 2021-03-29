@@ -1,6 +1,6 @@
 ﻿using IntegrationConnectors.AzDevOps.Model.Shared;
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace IntegrationConnectors.AzDevOps.Model.Build
 {
@@ -8,7 +8,7 @@ namespace IntegrationConnectors.AzDevOps.Model.Build
     {
         public string Id { get; set; }
         public string Status { get; set; }
-        [JsonProperty("result")]
+        [JsonPropertyName("result")]
         public string SubStatus { get; set; }
         public DateTime QueueTime { get; set; }
         public string Parameters { get; set; }

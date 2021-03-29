@@ -1,8 +1,8 @@
 ﻿using IntegrationConnectors.Common;
 using IntegrationConnectors.Common.Http;
 using IntegrationConnectors.Proget.Model;
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace IntegrationConnectors.Proget
@@ -16,7 +16,7 @@ namespace IntegrationConnectors.Proget
         public async Task<List<ProgetPackage>> GetPromotionsAsync(string sourceFeed, string targetFeed)
         {
             var response = await GetAsync($"{_baseUrl}/promotions/list?fromFeed={sourceFeed}&toFeed={targetFeed}");
-            var progetPackages = JsonConvert.DeserializeObject<List<ProgetPackage>>(response);
+            var progetPackages = JsonSerializer.Deserialize<List<ProgetPackage>>(response);
             return progetPackages;
         }
 
@@ -24,7 +24,7 @@ namespace IntegrationConnectors.Proget
         {
             foreach (var packagePromotion in packagePromotions)
             {
-                var packagePromotionJson = JsonConvert.SerializeObject(packagePromotion);
+                var packagePromotionJson = JsonSerializer.Serialize(packagePromotion);
                 await PostWithJsonAsync($"{_baseUrl}/promotions/promote", packagePromotionJson);
             }
         }

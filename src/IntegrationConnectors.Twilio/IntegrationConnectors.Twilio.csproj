@@ -5,12 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="IntegrationConnectors.Common" Version="5.0.6" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\IntegrationConnectors.Common\IntegrationConnectors.Common.csproj" />
+    <PackageReference Include="IntegrationConnectors.Common" Version="5.0.7" />
+    <PackageReference Include="System.Json" Version="4.7.1" />
   </ItemGroup>
 
 </Project>

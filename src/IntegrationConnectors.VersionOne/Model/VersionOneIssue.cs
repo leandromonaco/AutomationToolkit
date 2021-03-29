@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace AutomationConnectors.VersionOne.Model
 {
@@ -7,21 +7,21 @@ namespace AutomationConnectors.VersionOne.Model
     {
         public string Number { get; set; }
         public string Name { get; set; }
-        [JsonProperty("Team.Name")]
+        [JsonPropertyName("Team.Name")]
         public string Team { get; set; }
-        [JsonProperty("Category.Name")]
+        [JsonPropertyName("Category.Name")]
         public string Category { get; set; }
         public string IdentifiedBy { get; set; }
-        [JsonProperty("Owner.Name")]
+        [JsonPropertyName("Owner.Name")]
         public string Owner { get; set; }
         public string Resolution { get; set; }
-        [JsonProperty("ResolutionReason.Name")]
+        [JsonPropertyName("ResolutionReason.Name")]
         public string ResolutionReason { get; set; }
         public DateTime ChangeDate { get; set; }
         public VersionOneAssetState AssetState { get; set; }
-        [JsonProperty("_oid")]
+        [JsonPropertyName("_oid")]
         public string Url { get; set; }
-        [JsonProperty("CreatedBy.Email")]
+        [JsonPropertyName("CreatedBy.Email")]
         public string CreatedByEmail { get; set; }
     }
 }

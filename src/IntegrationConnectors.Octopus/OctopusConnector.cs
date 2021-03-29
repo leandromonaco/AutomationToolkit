@@ -1,8 +1,8 @@
 ﻿using IntegrationConnectors.Common;
 using IntegrationConnectors.Common.Http;
 using IntegrationConnectors.Octopus.Model;
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace IntegrationConnectors.Octopus
@@ -19,35 +19,35 @@ namespace IntegrationConnectors.Octopus
         public async Task<List<OctopusEnvironment>> GetEnvironmentsAsync()
         {
             var response = await GetAsync($"{_baseUrl}/{_spaceId}/environments?skip=0&take=2147483647");
-            var envs = JsonConvert.DeserializeObject<OctopusEnvironmentResponse>(response);
+            var envs = JsonSerializer.Deserialize<OctopusEnvironmentResponse>(response);
             return envs.Items;
         }
 
         public async Task<List<OctopusMachine>> GetMachinesAsync(string environmentId)
         {
             var response = await GetAsync($"{_baseUrl}/{_spaceId}/environments/{environmentId}/machines");
-            var machines = JsonConvert.DeserializeObject<OctopusMachineResponse>(response);
+            var machines = JsonSerializer.Deserialize<OctopusMachineResponse>(response);
             return machines.Items;
         }
 
         public async Task<List<OctopusDeployment>> GetDeploymentsAsync(string machineId)
         {
             var response = await GetAsync($"{_baseUrl}/{_spaceId}/machines/{machineId}/tasks");
-            var deployments = JsonConvert.DeserializeObject<OctopusDeploymentResponse>(response);
+            var deployments = JsonSerializer.Deserialize<OctopusDeploymentResponse>(response);
             return deployments.Items;
         }
 
         public async Task<OctopusProject> GetProjectAsync(string project)
         {
             var response = await GetAsync($"{_baseUrl}/{_spaceId}/projects/{project}");
-            var proj = JsonConvert.DeserializeObject<OctopusProject>(response);
+            var proj = JsonSerializer.Deserialize<OctopusProject>(response);
             return proj;
         }
 
         public async Task<OctopusVariableSet> GetVariableSetAsync(string ownerId)
         {
             var response = await GetAsync($"{_baseUrl}/LibraryVariableSets/{ownerId}");
-            var octopusVariableSet = JsonConvert.DeserializeObject<OctopusVariableSet>(response);
+            var octopusVariableSet = JsonSerializer.Deserialize<OctopusVariableSet>(response);
             return octopusVariableSet;
         }
 
@@ -58,7 +58,7 @@ namespace IntegrationConnectors.Octopus
             {
                 //Spaces-1/variables/
                 var response = await GetAsync($"{_baseUrl}/{_spaceId}/variables/{variableSet}");
-                var octopusVariableSet = JsonConvert.DeserializeObject<OctopusVariableSet>(response);
+                var octopusVariableSet = JsonSerializer.Deserialize<OctopusVariableSet>(response);
                 octopusVariableSets.Add(octopusVariableSet);
             }
 

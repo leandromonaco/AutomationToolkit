@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace IntegrationConnectors.Confluence.Model
 {
     public class ConfluencePageSearchResults
     {
         public List<ConfluencePageSearchResult> Results { get; set; }
-        [JsonProperty("_links")]
+        [JsonPropertyName("_links")]
         public ConfluencePageLinks Links { get; set; }
     }
 }

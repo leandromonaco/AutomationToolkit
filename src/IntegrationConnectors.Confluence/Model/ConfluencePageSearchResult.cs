@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace IntegrationConnectors.Confluence.Model
 {
@@ -10,7 +10,7 @@ namespace IntegrationConnectors.Confluence.Model
         public string Type { get; set; }
         public string Title { get; set; }
 
-        [JsonProperty("_links")]
+        [JsonPropertyName("_links")]
         public ConfluencePageLinks Links { get; set; }
 
         public ConfluencePageHistory History { get; set; }

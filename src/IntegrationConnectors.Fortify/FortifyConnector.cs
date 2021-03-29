@@ -1,8 +1,8 @@
 ﻿using IntegrationConnectors.Common;
 using IntegrationConnectors.Common.Http;
 using IntegrationConnectors.Fortify.Model;
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace IntegrationConnectors.Fortify
@@ -17,7 +17,7 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await PostWithJsonAsync($"{_baseUrl}/api/v1/tokens", "{\"type\": \"UnifiedLoginToken\"}");
-            var authResponse = JsonConvert.DeserializeObject<FortifyTokenResponse>(response);
+            var authResponse = JsonSerializer.Deserialize<FortifyTokenResponse>(response);
             return authResponse.Data.Token;
         }
 
@@ -25,7 +25,7 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await GetAsync($"{_baseUrl}/api/v1/projects");
-            var projectResponse = JsonConvert.DeserializeObject<FortifiyProjectsResponse>(response);
+            var projectResponse = JsonSerializer.Deserialize<FortifiyProjectsResponse>(response);
             return projectResponse.Data;
         }
 
@@ -33,14 +33,14 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await GetAsync($"{_baseUrl}/api/v1/projects/{projectId}/versions");
-            var projectResponse = JsonConvert.DeserializeObject<FortifiyProjectVersionsResponse>(response);
+            var projectResponse = JsonSerializer.Deserialize<FortifiyProjectVersionsResponse>(response);
             return projectResponse.Data;
         }
 
         public async Task<ExportToCsvResponse> ExportToCsvAsync(int projectVersionId, string csvFilename, string filterSet)
         {
             var response = await PostWithJsonAsync($"{_baseUrl}/api/v1/dataExports/action/exportAuditToCsv", $"{{ \"datasetName\": \"Audit\", \"fileName\": \"{csvFilename}\", \"filterSet\": \"{filterSet}\", \"includeCommentsInHistory\": true, \"includeHidden\": true, \"includeRemoved\": true, \"includeSuppressed\": true, \"projectVersionId\": {projectVersionId} }}");
-            var projectResponse = JsonConvert.DeserializeObject<ExportToCsvResponse>(response);
+            var projectResponse = JsonSerializer.Deserialize<ExportToCsvResponse>(response);
             return projectResponse;
         }
 
@@ -48,7 +48,7 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await GetAsync($"{_baseUrl}/api/v1/dataExports");
-            var projectResponse = JsonConvert.DeserializeObject<FortifyDataExportResponse>(response);
+            var projectResponse = JsonSerializer.Deserialize<FortifyDataExportResponse>(response);
             return projectResponse.Data;
         }
 
@@ -56,7 +56,7 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await PostWithJsonAsync($"{_baseUrl}/api/v1/fileTokens", "{\"fileTokenType\": \"REPORT_FILE\"}");
-            var authResponse = JsonConvert.DeserializeObject<FortifyTokenResponse>(response);
+            var authResponse = JsonSerializer.Deserialize<FortifyTokenResponse>(response);
             return authResponse.Data.Token;
         }
 
@@ -71,7 +71,7 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await GetAsync($"{_baseUrl}/api/v1/projectVersions/{projectVersionId}/issues?limit=-1");
-            var issuesResponse = JsonConvert.DeserializeObject<FortifyIssuesResponse>(response);
+            var issuesResponse = JsonSerializer.Deserialize<FortifyIssuesResponse>(response);
             return issuesResponse.Data;
         }
 
