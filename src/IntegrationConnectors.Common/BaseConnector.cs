@@ -1,9 +1,12 @@
 ﻿using IntegrationConnectors.Common.Http;
+using IntegrationConnectors.Common.JsonConverters;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace IntegrationConnectors.Common
@@ -12,7 +15,8 @@ namespace IntegrationConnectors.Common
     {
         private HttpClient _httpClient;
         protected string _baseUrl;
-        
+        protected JsonSerializerOptions _jsonSerializerOptions;
+
         public BaseConnector(string baseUrl, string apiKey, AuthenticationType authType)
         {
             _baseUrl = baseUrl;
@@ -21,12 +25,16 @@ namespace IntegrationConnectors.Common
             {
                 Authenticate(apiKey, authType);
             }
-            
-        }
 
-        public BaseConnector()
-        {
-            _httpClient = new HttpClient(new HttpClientHandler());
+            _jsonSerializerOptions = new()
+            {
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                Converters = {
+                                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
+                                new Int64Converter(),
+                                new DoubleConverter()
+                             }
+            };
         }
 
         private TimeSpan _timeout;
