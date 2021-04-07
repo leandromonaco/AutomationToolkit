@@ -1,6 +1,8 @@
-﻿using IntegrationConnectors.Common.Http;
+﻿using IntegrationConnectors.Common;
 using IntegrationConnectors.Confluence;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -23,7 +25,8 @@ namespace IntegrationConnectors.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _confluenceTestRepository = new ConfluenceConnector(_configuration["Confluence:Url"], _configuration["Confluence:Key"], AuthenticationType.Basic);
+            var key = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_configuration["Confluence:User"]}:{_configuration["Confluence:Password"]}"));
+            _confluenceTestRepository = new ConfluenceConnector(_configuration["Confluence:Url"], key, AuthenticationType.Basic);
         }
 
         [Fact]
@@ -40,7 +43,7 @@ namespace IntegrationConnectors.Test
             //var results = await _confluenceTestRepository.SearchContentByCreator("username");
             //var results = await _confluenceTestRepository.SearchContentByContributor("username");
             //var results = await _confluenceTestRepository.SearchContentByParentId("26343");
-            var results = await _confluenceTestRepository.SearchContentBySpace("SpaceKey");
+            var results = await _confluenceTestRepository.SearchContentBySpace("DPS");
         }
     }
 }

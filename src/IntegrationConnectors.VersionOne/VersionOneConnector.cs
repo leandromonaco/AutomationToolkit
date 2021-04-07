@@ -4,7 +4,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using AutomationConnectors.VersionOne.Model;
 using IntegrationConnectors.Common;
-using IntegrationConnectors.Common.Http;
 
 namespace AutomationConnectors.VersionOne
 {

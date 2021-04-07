@@ -1,4 +1,4 @@
-﻿using IntegrationConnectors.Common.Http;
+﻿using IntegrationConnectors.Common;
 using IntegrationConnectors.Twilio;
 using IntegrationConnectors.Twilio.Model;
 using Microsoft.Extensions.Configuration;
@@ -32,20 +32,23 @@ namespace IntegrationConnectors.Test
         [Fact]
         async Task SendMessage()
         {
+            var to = "+64279632374";
+
             var twilioMessage = new TwilioMessage() 
             { 
                                         From = "+16788330195",
-                                        To = "+64279632222",
-                                        Body = "Hello SMS"
+                                        To = to,
+                                        Body = "SMS Test"
             };
 
             var smsResult = await _twilioConnector.SendSMSAsync(twilioMessage);
+            smsResult = await _twilioConnector.SendSMSAsync(twilioMessage);
 
             twilioMessage = new TwilioMessage()
             {
                 From = "+14155238886",
-                To = "+64279632222",
-                Body = "Hello Whatsapp"
+                To = to,
+                Body = "Whatsapp Test"
             };
 
             var waResult = await _twilioConnector.SendWhatsappAsync(twilioMessage);

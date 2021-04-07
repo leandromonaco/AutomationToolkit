@@ -1,5 +1,4 @@
 ﻿using IntegrationConnectors.Common;
-using IntegrationConnectors.Common.Http;
 using System.Net;
 using System.ServiceModel.Syndication;
 using System.Threading.Tasks;

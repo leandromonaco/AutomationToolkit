@@ -1,5 +1,4 @@
 ﻿using IntegrationConnectors.Common;
-using IntegrationConnectors.Common.Http;
 using IntegrationConnectors.Proget.Model;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -16,7 +15,7 @@ namespace IntegrationConnectors.Proget
         public async Task<List<ProgetPackage>> GetPromotionsAsync(string sourceFeed, string targetFeed)
         {
             var response = await GetAsync($"{_baseUrl}/promotions/list?fromFeed={sourceFeed}&toFeed={targetFeed}");
-            var progetPackages = JsonSerializer.Deserialize<List<ProgetPackage>>(response);
+            var progetPackages = JsonSerializer.Deserialize<List<ProgetPackage>>(response, _jsonSerializerOptions);
             return progetPackages;
         }
 

@@ -1,4 +1,4 @@
-﻿using IntegrationConnectors.Common.Http;
+﻿using IntegrationConnectors.Common;
 using Microsoft.Exchange.WebServices.Data;
 using System;
 using System.Collections.Generic;

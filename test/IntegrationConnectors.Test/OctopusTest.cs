@@ -1,4 +1,4 @@
-﻿using IntegrationConnectors.Common.Http;
+﻿using IntegrationConnectors.Common;
 using IntegrationConnectors.Octopus;
 using IntegrationConnectors.Octopus.Model;
 using Microsoft.Extensions.Configuration;

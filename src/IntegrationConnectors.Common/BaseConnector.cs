@@ -28,10 +28,13 @@ namespace IntegrationConnectors.Common
             _jsonSerializerOptions = new()
             {
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                PropertyNameCaseInsensitive = true, 
+                MaxDepth = 0,
                 Converters = {
                                 new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
                                 new Int64Converter(),
-                                new DoubleConverter()
+                                new DoubleConverter(),
+                                new DateTimeConverter()
                              }
             };
         }
@@ -90,8 +93,8 @@ namespace IntegrationConnectors.Common
 
         public async Task<string> PostWithParametersAsync(string requestUri, Dictionary<string, string> parameters)
         {
-            var encodedContent = new FormUrlEncodedContent(parameters);
-            var result = await _httpClient.PostAsync(requestUri, encodedContent);
+            var formUrlEncoded = new FormUrlEncodedContent(parameters);
+            var result = await _httpClient.PostAsync(requestUri, formUrlEncoded);
             return await result.Content.ReadAsStringAsync();
         }
 

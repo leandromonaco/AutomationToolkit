@@ -1,4 +1,4 @@
-﻿using IntegrationConnectors.Common.Http;
+﻿using IntegrationConnectors.Common;
 using IntegrationConnectors.Proget;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;

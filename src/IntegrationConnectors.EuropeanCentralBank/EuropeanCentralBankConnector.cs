@@ -1,5 +1,4 @@
 ﻿using IntegrationConnectors.Common;
-using IntegrationConnectors.Common.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Linq;

@@ -1,5 +1,5 @@
 ﻿using AutomationConnectors.VersionOne;
-using IntegrationConnectors.Common.Http;
+using IntegrationConnectors.Common;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using Xunit;

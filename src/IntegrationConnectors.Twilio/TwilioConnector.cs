@@ -1,5 +1,4 @@
 ﻿using IntegrationConnectors.Common;
-using IntegrationConnectors.Common.Http;
 using IntegrationConnectors.Twilio.Model;
 using System;
 using System.Collections.Generic;

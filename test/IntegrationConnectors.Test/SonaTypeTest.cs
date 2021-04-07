@@ -1,7 +1,10 @@
 ﻿using AutomationConnectors.SonaType;
-using IntegrationConnectors.Common.Http;
+using IntegrationConnectors.Common;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
+using WireMock.RequestBuilders;
+using WireMock.ResponseBuilders;
+using WireMock.Server;
 using Xunit;
 
 namespace IntegrationConnectors.Test
@@ -13,6 +16,7 @@ namespace IntegrationConnectors.Test
     {
         IConfiguration _configuration;
         SonaTypeConnector _sonaTypeTestRepository;
+        WireMockServer _httpMockServer;
 
         public SonaTypeTest()
         {
@@ -23,7 +27,16 @@ namespace IntegrationConnectors.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _sonaTypeTestRepository = new SonaTypeConnector(_configuration["SonaType:Url"], _configuration["SonaType:Key"], AuthenticationType.Bearer);
+            _httpMockServer = WireMockServer.Start();
+
+            _httpMockServer.Given(Request.Create().WithPath("/v3/component-report").UsingGet())
+                           .RespondWith(Response.Create()
+                                                .WithStatusCode(200)
+                                                .WithBody(@"{ ""msg"": ""Hello world!"" }")
+                                       );
+
+            _sonaTypeTestRepository = new SonaTypeConnector($"{_httpMockServer.Urls[0]}/v3/component-report", _configuration["SonaType:Key"], AuthenticationType.Bearer);
+
         }
 
         [Fact]

@@ -5,6 +5,7 @@ namespace IntegrationConnectors.Fortify.Model
 {
     public class FortifyIssue
     {
+        public string IssueInstanceId { get; set; }
         public string IssueName { get; set; }
         public string PrimaryLocation { get; set; }
         public string Kingdom { get; set; }

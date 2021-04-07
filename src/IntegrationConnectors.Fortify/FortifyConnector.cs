@@ -1,5 +1,4 @@
 ﻿using IntegrationConnectors.Common;
-using IntegrationConnectors.Common.Http;
 using IntegrationConnectors.Fortify.Model;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -17,7 +16,7 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await PostWithJsonAsync($"{_baseUrl}/api/v1/tokens", "{\"type\": \"UnifiedLoginToken\"}");
-            var authResponse = JsonSerializer.Deserialize<FortifyTokenResponse>(response);
+            var authResponse = JsonSerializer.Deserialize<FortifyTokenResponse>(response, _jsonSerializerOptions);
             return authResponse.Data.Token;
         }
 
@@ -25,7 +24,7 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await GetAsync($"{_baseUrl}/api/v1/projects");
-            var projectResponse = JsonSerializer.Deserialize<FortifiyProjectsResponse>(response);
+            var projectResponse = JsonSerializer.Deserialize<FortifiyProjectsResponse>(response, _jsonSerializerOptions);
             return projectResponse.Data;
         }
 
@@ -33,14 +32,14 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await GetAsync($"{_baseUrl}/api/v1/projects/{projectId}/versions");
-            var projectResponse = JsonSerializer.Deserialize<FortifiyProjectVersionsResponse>(response);
+            var projectResponse = JsonSerializer.Deserialize<FortifiyProjectVersionsResponse>(response, _jsonSerializerOptions);
             return projectResponse.Data;
         }
 
         public async Task<ExportToCsvResponse> ExportToCsvAsync(int projectVersionId, string csvFilename, string filterSet)
         {
             var response = await PostWithJsonAsync($"{_baseUrl}/api/v1/dataExports/action/exportAuditToCsv", $"{{ \"datasetName\": \"Audit\", \"fileName\": \"{csvFilename}\", \"filterSet\": \"{filterSet}\", \"includeCommentsInHistory\": true, \"includeHidden\": true, \"includeRemoved\": true, \"includeSuppressed\": true, \"projectVersionId\": {projectVersionId} }}");
-            var projectResponse = JsonSerializer.Deserialize<ExportToCsvResponse>(response);
+            var projectResponse = JsonSerializer.Deserialize<ExportToCsvResponse>(response, _jsonSerializerOptions);
             return projectResponse;
         }
 
@@ -48,7 +47,7 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await GetAsync($"{_baseUrl}/api/v1/dataExports");
-            var projectResponse = JsonSerializer.Deserialize<FortifyDataExportResponse>(response);
+            var projectResponse = JsonSerializer.Deserialize<FortifyDataExportResponse>(response, _jsonSerializerOptions);
             return projectResponse.Data;
         }
 
@@ -56,7 +55,7 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await PostWithJsonAsync($"{_baseUrl}/api/v1/fileTokens", "{\"fileTokenType\": \"REPORT_FILE\"}");
-            var authResponse = JsonSerializer.Deserialize<FortifyTokenResponse>(response);
+            var authResponse = JsonSerializer.Deserialize<FortifyTokenResponse>(response, _jsonSerializerOptions);
             return authResponse.Data.Token;
         }
 
@@ -71,7 +70,15 @@ namespace IntegrationConnectors.Fortify
         {
             //Get ConfluenceConnector Page Info
             var response = await GetAsync($"{_baseUrl}/api/v1/projectVersions/{projectVersionId}/issues?limit=-1");
-            var issuesResponse = JsonSerializer.Deserialize<FortifyIssuesResponse>(response);
+            var issuesResponse = JsonSerializer.Deserialize<FortifyIssuesResponse>(response, _jsonSerializerOptions);
+            return issuesResponse.Data;
+        }
+
+        public async Task<List<FortifyIssueDetails>> GetIssueDetailsAsync(string projectName, string projectVersionName, string instanceId)
+        {
+            //Get ConfluenceConnector Page Info
+            var response = await GetAsync($"{_baseUrl}/api/v1/issueDetails?projectName={projectName}&projectVersionName={projectVersionName}&instanceId={instanceId}");
+            var issuesResponse = JsonSerializer.Deserialize<FortifyIssueDetailsResponse>(response, _jsonSerializerOptions);
             return issuesResponse.Data;
         }
 
