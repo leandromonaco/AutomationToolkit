@@ -8,10 +8,12 @@ namespace IntegrationConnectors.Fortify.Model
         public string IssueInstanceId { get; set; }
         public string IssueName { get; set; }
         public string PrimaryLocation { get; set; }
+        public int LineNumber { get; set; }
         public string Kingdom { get; set; }
         //[JsonPropertyName("friority")] //workaround
         public string friority { get; set; }
         public string IssueStatus { get; set; }
+        public string ScanStatus { get; set; }
         public DateTime FoundDate { get; set; }
         public DateTime? RemovedDate { get; set; }
         public string PrimaryTag { get; set; }
