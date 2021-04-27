@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace IntegrationConnectors.ForeignExchange
 {
-    public class EuropeanCentralBankConnector : BaseConnector
+    public class EuropeanCentralBankConnector : HttpConnector
     {
         readonly string _url;
         public EuropeanCentralBankConnector(string url) : base(string.Empty, string.Empty, AuthenticationType.None)

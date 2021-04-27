@@ -6,9 +6,9 @@
         Basic,
         Bearer,
         DefaultCredentials,
-        OctopusKey,
-        ProgetKey,
+        Octopus,
+        Proget,
         Exchange,
-        FortifyToken
+        Fortify
     }
 }

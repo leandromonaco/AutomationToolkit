@@ -20,7 +20,7 @@ namespace IntegrationConnectors.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _progetRepository = new ProgetConnector(_configuration["Proget:Url"], _configuration["Proget:Key"], AuthenticationType.ProgetKey);
+            _progetRepository = new ProgetConnector(_configuration["Proget:Url"], _configuration["Proget:Key"], AuthenticationType.Proget);
         }
 
         [Fact]

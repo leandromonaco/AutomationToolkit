@@ -23,7 +23,7 @@ namespace IntegrationConnectors.Test
                                         .AddEnvironmentVariables()
                                         .Build();
 
-            _octopusRepository = new OctopusConnector(_configuration["Octopus:Url"], _configuration["Octopus:Key"], _configuration["Octopus:SpaceId"], AuthenticationType.OctopusKey);
+            _octopusRepository = new OctopusConnector(_configuration["Octopus:Url"], _configuration["Octopus:Key"], _configuration["Octopus:SpaceId"], AuthenticationType.Octopus);
         }
 
         [Fact]

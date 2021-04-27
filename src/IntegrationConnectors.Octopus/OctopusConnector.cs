@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IntegrationConnectors.Octopus
 {
-    public class OctopusConnector : BaseConnector
+    public class OctopusConnector : HttpConnector
     {
         private string _spaceId;
 
@@ -17,35 +17,35 @@ namespace IntegrationConnectors.Octopus
 
         public async Task<List<OctopusEnvironment>> GetEnvironmentsAsync()
         {
-            var response = await GetAsync($"{_baseUrl}/{_spaceId}/environments?skip=0&take=2147483647");
+            var response = await GetAsync($"{_url}/{_spaceId}/environments?skip=0&take=2147483647");
             var envs = JsonSerializer.Deserialize<OctopusEnvironmentResponse>(response, _jsonSerializerOptions);
             return envs.Items;
         }
 
         public async Task<List<OctopusMachine>> GetMachinesAsync(string environmentId)
         {
-            var response = await GetAsync($"{_baseUrl}/{_spaceId}/environments/{environmentId}/machines");
+            var response = await GetAsync($"{_url}/{_spaceId}/environments/{environmentId}/machines");
             var machines = JsonSerializer.Deserialize<OctopusMachineResponse>(response, _jsonSerializerOptions);
             return machines.Items;
         }
 
         public async Task<List<OctopusDeployment>> GetDeploymentsAsync(string machineId)
         {
-            var response = await GetAsync($"{_baseUrl}/{_spaceId}/machines/{machineId}/tasks");
+            var response = await GetAsync($"{_url}/{_spaceId}/machines/{machineId}/tasks");
             var deployments = JsonSerializer.Deserialize<OctopusDeploymentResponse>(response, _jsonSerializerOptions);
             return deployments.Items;
         }
 
         public async Task<OctopusProject> GetProjectAsync(string project)
         {
-            var response = await GetAsync($"{_baseUrl}/{_spaceId}/projects/{project}");
+            var response = await GetAsync($"{_url}/{_spaceId}/projects/{project}");
             var proj = JsonSerializer.Deserialize<OctopusProject>(response, _jsonSerializerOptions);
             return proj;
         }
 
         public async Task<OctopusVariableSet> GetVariableSetAsync(string ownerId)
         {
-            var response = await GetAsync($"{_baseUrl}/LibraryVariableSets/{ownerId}");
+            var response = await GetAsync($"{_url}/LibraryVariableSets/{ownerId}");
             var octopusVariableSet = JsonSerializer.Deserialize<OctopusVariableSet>(response, _jsonSerializerOptions);
             return octopusVariableSet;
         }
@@ -56,7 +56,7 @@ namespace IntegrationConnectors.Octopus
             foreach (var variableSet in variableSets)
             {
                 //Spaces-1/variables/
-                var response = await GetAsync($"{_baseUrl}/{_spaceId}/variables/{variableSet}");
+                var response = await GetAsync($"{_url}/{_spaceId}/variables/{variableSet}");
                 var octopusVariableSet = JsonSerializer.Deserialize<OctopusVariableSet>(response, _jsonSerializerOptions);
                 octopusVariableSets.Add(octopusVariableSet);
             }
@@ -66,13 +66,13 @@ namespace IntegrationConnectors.Octopus
 
         public async Task<string> GetDeploymentProcessAsync(string deploymentProcessId)
         {
-            var response = await GetAsync($"{_baseUrl}/{_spaceId}/deploymentprocesses/{deploymentProcessId}");
+            var response = await GetAsync($"{_url}/{_spaceId}/deploymentprocesses/{deploymentProcessId}");
             return response;
         }
 
         public async Task UpdateDeploymentProcessAsync(string targetDeploymentProcessId, string jsonContent)
         {
-            await PutAsync($"{_baseUrl}/{_spaceId}/deploymentprocesses/{targetDeploymentProcessId}", jsonContent);
+            await PutAsync($"{_url}/{_spaceId}/deploymentprocesses/{targetDeploymentProcessId}", jsonContent);
         }
     }
 }

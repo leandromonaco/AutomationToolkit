@@ -34,7 +34,7 @@ namespace IntegrationConnectors.Test
         {
             var unifiedLoginToken = await _fortifyTestRepository.GetUnifiedLoginTokenAsync();
 
-            _fortifyTestRepository2 = new FortifyConnector(_configuration["Fortify:Url"], unifiedLoginToken, AuthenticationType.FortifyToken);
+            _fortifyTestRepository2 = new FortifyConnector(_configuration["Fortify:Url"], unifiedLoginToken, AuthenticationType.Fortify);
 
             var projects = await _fortifyTestRepository2.GetProjectsAsync();
 

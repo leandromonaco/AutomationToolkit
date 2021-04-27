@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IntegrationConnectors.Twilio
 {
-    public class TwilioConnector : BaseConnector
+    public class TwilioConnector : HttpConnector
     {
         string _accountSid;
         public TwilioConnector(string baseUrl, string apiKey, AuthenticationType authType) : base(baseUrl, apiKey, authType)
@@ -27,7 +27,7 @@ namespace IntegrationConnectors.Twilio
                 { "Body", twilioMessage.Body }
             };
             
-            var response = await PostWithParametersAsync($"{_baseUrl}/2010-04-01/Accounts/{_accountSid}/Messages.json", parameters);
+            var response = await PostAsync($"{_url}/2010-04-01/Accounts/{_accountSid}/Messages.json", parameters);
 
             return response;
         }
@@ -41,7 +41,7 @@ namespace IntegrationConnectors.Twilio
                 { "Body", twilioMessage.Body }
             };
 
-            var response = await PostWithParametersAsync($"{_baseUrl}/2010-04-01/Accounts/{_accountSid}/Messages.json", parameters);
+            var response = await PostAsync($"{_url}/2010-04-01/Accounts/{_accountSid}/Messages.json", parameters);
 
             return response;
         }

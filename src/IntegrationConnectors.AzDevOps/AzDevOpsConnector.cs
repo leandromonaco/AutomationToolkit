@@ -15,7 +15,7 @@ using System.Text.Json;
 
 namespace IntegrationConnectors.AzDevOps
 {
-    public class AzDevOpsConnector : BaseConnector
+    public class AzDevOpsConnector : HttpConnector
     {
         public AzDevOpsConnector(string baseUrl, string apiKey, AuthenticationType authType) : base(baseUrl, apiKey, authType)
         {
@@ -23,21 +23,21 @@ namespace IntegrationConnectors.AzDevOps
 
         public async Task<List<AzDevOpsCodeRepository>> GetRepositoriesAsync()
         {
-            var response = await GetAsync($"{_baseUrl}/git/repositories");
+            var response = await GetAsync($"{_url}/git/repositories");
             var azureDevOpsRepositories = JsonSerializer.Deserialize<AzDevOpsCodeRepositories>(response, _jsonSerializerOptions);
             return azureDevOpsRepositories.Value;
         }
 
         public async Task<AzDevOpsCodeRepository> GetRepositoryAsync(string repositoryName)
         {
-            var response = await GetAsync($"{_baseUrl}/git/repositories");
+            var response = await GetAsync($"{_url}/git/repositories");
             var azureDevOpsRepositories = JsonSerializer.Deserialize<AzDevOpsCodeRepositories>(response, _jsonSerializerOptions);
             return azureDevOpsRepositories.Value.FirstOrDefault(r => r.Name.Equals(repositoryName));
         }
 
         public async Task<List<AzDevOpsBranch>> GetBranchesAsync(string repositoryId)
         {
-            var response = await GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/refs");
+            var response = await GetAsync($"{_url}/git/repositories/{repositoryId}/refs");
             var azureDevOpsBranches = JsonSerializer.Deserialize<AzDevOpsBranches>(response, _jsonSerializerOptions);
             return azureDevOpsBranches.Value;
         }
@@ -48,7 +48,7 @@ namespace IntegrationConnectors.AzDevOps
             var startDateStr = from.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture);
             var finishDateStr = to.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture);
 
-            var response = await GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/commits?searchCriteria.itemVersion.version={HttpUtility.UrlEncode(branchName)}&searchCriteria.toDate={finishDateStr}&searchCriteria.fromDate={startDateStr}&searchCriteria.includePushData=true&$top={numberOfRecords}");
+            var response = await GetAsync($"{_url}/git/repositories/{repositoryId}/commits?searchCriteria.itemVersion.version={HttpUtility.UrlEncode(branchName)}&searchCriteria.toDate={finishDateStr}&searchCriteria.fromDate={startDateStr}&searchCriteria.includePushData=true&$top={numberOfRecords}");
             var azureDevOpsCommits = JsonSerializer.Deserialize<AzDevOpsCommits>(response, _jsonSerializerOptions);
             return azureDevOpsCommits.Value;
         }
@@ -59,7 +59,7 @@ namespace IntegrationConnectors.AzDevOps
         /// <returns></returns>
         public async Task<List<AzDevOpsBuildDefinition>> GetBuildDefinitionsAsync(bool includeAllProperties, bool includeLatestBuilds)
         {
-            var response = await GetAsync($"{_baseUrl}/build/definitions?includeAllProperties={includeAllProperties}&includeLatestBuilds={includeLatestBuilds}");
+            var response = await GetAsync($"{_url}/build/definitions?includeAllProperties={includeAllProperties}&includeLatestBuilds={includeLatestBuilds}");
             var buildDefinitions = JsonSerializer.Deserialize<AzDevOpsBuildDefinitions>(response, _jsonSerializerOptions);
             return buildDefinitions.Value;
         }
@@ -70,21 +70,21 @@ namespace IntegrationConnectors.AzDevOps
         /// <returns></returns>
         public async Task<List<AzDevOpsTestRun>> GetTestRunsAsync(bool includeRunDetails)
         {
-            var response = await GetAsync($"{_baseUrl}/test/runs?includeRunDetails={includeRunDetails}");
+            var response = await GetAsync($"{_url}/test/runs?includeRunDetails={includeRunDetails}");
             var testRuns = JsonSerializer.Deserialize<AzDevOpsTestRuns>(response, _jsonSerializerOptions);
             return testRuns.Value;
         }
 
         public async Task<List<AzDevOpsBuild>> GetBuildsAsync()
         {
-            var response = await GetAsync($"{_baseUrl}/build/builds");
+            var response = await GetAsync($"{_url}/build/builds");
             var builds = JsonSerializer.Deserialize<AzDevOpsBuilds>(response, _jsonSerializerOptions);
             return builds.Value;
         }
 
         public async Task<AzDevOpsBuild> GetBuildAsync(string buildId)
         {
-            var response = await GetAsync($"{_baseUrl}/build/builds/{buildId}");
+            var response = await GetAsync($"{_url}/build/builds/{buildId}");
             var build = JsonSerializer.Deserialize<AzDevOpsBuild>(response, _jsonSerializerOptions);
             return build;
         }
@@ -95,11 +95,11 @@ namespace IntegrationConnectors.AzDevOps
 
             if (isPullRequestCompleted)
             {
-                response = await GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/pullrequests?searchCriteria.status=completed");
+                response = await GetAsync($"{_url}/git/repositories/{repositoryId}/pullrequests?searchCriteria.status=completed");
             }
             else
             {
-                response = await GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/pullrequests");
+                response = await GetAsync($"{_url}/git/repositories/{repositoryId}/pullrequests");
             }
 
             return JsonSerializer.Deserialize<AzDevOpsPullRequests>(response, _jsonSerializerOptions).Value;
@@ -111,11 +111,11 @@ namespace IntegrationConnectors.AzDevOps
 
             if (isPullRequestCompleted)
             {
-                response = await GetAsync($"{_baseUrl}/git/pullrequests?$top={numberOfRecords}&searchCriteria.status=completed");
+                response = await GetAsync($"{_url}/git/pullrequests?$top={numberOfRecords}&searchCriteria.status=completed");
             }
             else
             {
-                response = await GetAsync($"{_baseUrl}/git/pullrequests?$top={numberOfRecords}");
+                response = await GetAsync($"{_url}/git/pullrequests?$top={numberOfRecords}");
             }
 
             return JsonSerializer.Deserialize<AzDevOpsPullRequests>(response, _jsonSerializerOptions).Value;
@@ -123,7 +123,7 @@ namespace IntegrationConnectors.AzDevOps
 
         public async Task<List<AzDevOpsPullRequestThread>> GetPullRequestThreadsAsync(string repositoryId, string pullRequestId)
         {
-            var response = await GetAsync($"{_baseUrl}/git/repositories/{repositoryId}/pullrequests/{pullRequestId}/threads");
+            var response = await GetAsync($"{_url}/git/repositories/{repositoryId}/pullrequests/{pullRequestId}/threads");
             var pullRequestThreads = JsonSerializer.Deserialize<AzDevOpsPullRequestThreads>(response, _jsonSerializerOptions);
             return pullRequestThreads.Value;
         }
@@ -149,7 +149,7 @@ namespace IntegrationConnectors.AzDevOps
                 sourceBranch = branchName,
             };
 
-            response = await PostWithJsonAsync($"{_baseUrl}/build/builds?api-version=6.0", JsonSerializer.Serialize(body));
+            response = await PostAsync($"{_url}/build/builds?api-version=6.0", JsonSerializer.Serialize(body));
             var newQueuedBuild = JsonSerializer.Deserialize<AzDevOpsBuild>(response, _jsonSerializerOptions);
 
             if (waitUntilCompletion)

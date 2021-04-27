@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutomationConnectors.SonaType
 {
-    public class SonaTypeConnector : BaseConnector
+    public class SonaTypeConnector : HttpConnector
     {
         public SonaTypeConnector(string baseUrl, string apiKey, AuthenticationType authType) : base(baseUrl, apiKey, authType)
         {
@@ -14,7 +14,7 @@ namespace AutomationConnectors.SonaType
 
         public async Task<List<SonaTypeComponentScanResult>> ScanComponent(string coordinates)
         {
-            var resultJson = await PostWithJsonAsync($"{_baseUrl}/v3/component-report", coordinates);
+            var resultJson = await PostAsync($"{_url}/v3/component-report", coordinates);
             var result = JsonSerializer.Deserialize<List<SonaTypeComponentScanResult>>(resultJson, _jsonSerializerOptions);
             return result;
         }

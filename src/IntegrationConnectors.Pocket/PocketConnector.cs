@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace AutomationConnectors.Pocket
 {
-    public class PocketConnector: BaseConnector
+    public class PocketConnector: HttpConnector
     {
         //TODO: connect to 
 

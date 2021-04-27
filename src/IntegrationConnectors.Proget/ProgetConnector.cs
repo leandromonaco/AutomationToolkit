@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IntegrationConnectors.Proget
 {
-    public class ProgetConnector : BaseConnector
+    public class ProgetConnector : HttpConnector
     {
         public ProgetConnector(string baseUrl, string apiKey, AuthenticationType authType) : base(baseUrl, apiKey, authType)
         {
@@ -14,7 +14,7 @@ namespace IntegrationConnectors.Proget
 
         public async Task<List<ProgetPackage>> GetPromotionsAsync(string sourceFeed, string targetFeed)
         {
-            var response = await GetAsync($"{_baseUrl}/promotions/list?fromFeed={sourceFeed}&toFeed={targetFeed}");
+            var response = await GetAsync($"{_url}/promotions/list?fromFeed={sourceFeed}&toFeed={targetFeed}");
             var progetPackages = JsonSerializer.Deserialize<List<ProgetPackage>>(response, _jsonSerializerOptions);
             return progetPackages;
         }
@@ -24,7 +24,7 @@ namespace IntegrationConnectors.Proget
             foreach (var packagePromotion in packagePromotions)
             {
                 var packagePromotionJson = JsonSerializer.Serialize(packagePromotion);
-                await PostWithJsonAsync($"{_baseUrl}/promotions/promote", packagePromotionJson);
+                await PostAsync($"{_url}/promotions/promote", packagePromotionJson);
             }
         }
     }

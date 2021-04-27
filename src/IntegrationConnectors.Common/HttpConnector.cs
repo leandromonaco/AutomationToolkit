@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace IntegrationConnectors.Common
 {
-    public class BaseConnector
+    public class HttpConnector
     {
         private HttpClient _httpClient;
-        protected string _baseUrl;
+        protected string _url;
         protected JsonSerializerOptions _jsonSerializerOptions;
 
-        public BaseConnector(string baseUrl, string apiKey, AuthenticationType authType)
+        public HttpConnector(string url, string key, AuthenticationType authType)
         {
-            _baseUrl = baseUrl;
+            _url = url;
             _httpClient = new HttpClient(new HttpClientHandler());
             if (!authType.Equals(AuthenticationType.None))
             {
-                Authenticate(apiKey, authType);
+                AddAuthenticantionHeader(key, authType);
             }
 
             _jsonSerializerOptions = new()
@@ -50,27 +50,27 @@ namespace IntegrationConnectors.Common
             }
         }
 
-        public void Authenticate(string apiKey, AuthenticationType authType)
+        private void AddAuthenticantionHeader(string key, AuthenticationType authType)
         {
             switch (authType)
             {
                 case AuthenticationType.Basic:
-                    _httpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {apiKey}");
+                    _httpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {key}");
                     break;
                 case AuthenticationType.Bearer:
-                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+                    _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {key}");
                     break;
                 case AuthenticationType.DefaultCredentials:
                     _httpClient = new HttpClient(new HttpClientHandler() { UseDefaultCredentials = true });
                     break;
-                case AuthenticationType.OctopusKey:
-                    _httpClient.DefaultRequestHeaders.Add("X-Octopus-ApiKey", apiKey);
+                case AuthenticationType.Octopus:
+                    _httpClient.DefaultRequestHeaders.Add("X-Octopus-ApiKey", key);
                     break;
-                case AuthenticationType.ProgetKey:
-                    _httpClient.DefaultRequestHeaders.Add("X-ApiKey", apiKey);
+                case AuthenticationType.Proget:
+                    _httpClient.DefaultRequestHeaders.Add("X-ApiKey", key);
                     break;
-                case AuthenticationType.FortifyToken:
-                    _httpClient.DefaultRequestHeaders.Add("Authorization", $"FortifyToken {apiKey}");
+                case AuthenticationType.Fortify:
+                    _httpClient.DefaultRequestHeaders.Add("Authorization", $"FortifyToken {key}");
                     break;
                 default:
                     throw new Exception("AuthenticationType is not implemented");
@@ -84,14 +84,14 @@ namespace IntegrationConnectors.Common
             return await result.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> PostWithJsonAsync(string requestUri, string jsonContent)
+        public async Task<string> PostAsync(string requestUri, string jsonContent)
         {
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
             var result = await _httpClient.PostAsync(requestUri, content);
             return await result.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> PostWithParametersAsync(string requestUri, Dictionary<string, string> parameters)
+        public async Task<string> PostAsync(string requestUri, Dictionary<string, string> parameters)
         {
             var formUrlEncoded = new FormUrlEncodedContent(parameters);
             var result = await _httpClient.PostAsync(requestUri, formUrlEncoded);
