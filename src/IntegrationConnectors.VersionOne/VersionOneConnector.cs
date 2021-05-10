@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
-using AutomationConnectors.VersionOne.Model;
+using IntegrationConnectors.VersionOne.Model;
 using IntegrationConnectors.Common;
 
-namespace AutomationConnectors.VersionOne
+namespace IntegrationConnectors.VersionOne
 {
     public class VersionOneConnector: HttpConnector
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace AutomationConnectors.VersionOne.Model
+namespace IntegrationConnectors.VersionOne.Model
 {
     public class VersionOneWorkItem
     {

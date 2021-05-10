@@ -1,10 +1,10 @@
-﻿using AutomationConnectors.SonaType.Model;
+﻿using IntegrationConnectors.SonaType.Model;
 using IntegrationConnectors.Common;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace AutomationConnectors.SonaType
+namespace IntegrationConnectors.SonaType
 {
     public class SonaTypeConnector : HttpConnector
     {

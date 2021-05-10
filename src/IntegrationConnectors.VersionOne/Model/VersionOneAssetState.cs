@@ -1,4 +1,4 @@
-﻿namespace AutomationConnectors.VersionOne.Model
+﻿namespace IntegrationConnectors.VersionOne.Model
 {
     /// <summary>
     /// //https://community.versionone.com/VersionOne_Connect/Developer_Library/Getting_Started/Platform_Concepts/Asset_State

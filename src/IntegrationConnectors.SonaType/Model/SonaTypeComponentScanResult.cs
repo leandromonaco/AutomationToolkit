@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AutomationConnectors.SonaType.Model
+namespace IntegrationConnectors.SonaType.Model
 {
     public class SonaTypeComponentScanResult
     {

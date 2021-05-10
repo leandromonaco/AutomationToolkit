@@ -1,4 +1,4 @@
-next-version: 5.0.12
+next-version: 5.0.13
 branches:
   main:
     regex: ^latest$

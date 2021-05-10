@@ -4,7 +4,7 @@ using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace AutomationConnectors.Pocket
+namespace IntegrationConnectors.Pocket
 {
     public class PocketConnector: HttpConnector
     {

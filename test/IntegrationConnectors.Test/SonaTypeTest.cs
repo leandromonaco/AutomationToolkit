@@ -1,4 +1,4 @@
-﻿using AutomationConnectors.SonaType;
+﻿using IntegrationConnectors.SonaType;
 using IntegrationConnectors.Common;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;

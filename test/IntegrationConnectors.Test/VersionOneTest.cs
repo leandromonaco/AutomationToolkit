@@ -1,4 +1,4 @@
-﻿using AutomationConnectors.VersionOne;
+﻿using IntegrationConnectors.VersionOne;
 using IntegrationConnectors.Common;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;

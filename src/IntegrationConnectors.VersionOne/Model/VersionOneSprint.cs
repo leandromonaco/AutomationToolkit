@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutomationConnectors.VersionOne.Model
+namespace IntegrationConnectors.VersionOne.Model
 {
 
     public class VersionOneSprint
